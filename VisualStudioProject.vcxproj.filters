@@ -71,7 +71,7 @@
     <ClCompile Include="Source Files\UnitTests\UnitTests.cpp">
       <Filter>Source Files\UnitTests</Filter>
     </ClCompile>
-    <ClCompile Include="Block.cpp">
+    <ClCompile Include="Source Files\Game\Block.cpp">
       <Filter>Source Files\Game</Filter>
     </ClCompile>
   </ItemGroup>

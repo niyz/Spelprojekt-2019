@@ -30,7 +30,7 @@
     <ClInclude Include="Header Files\UnitTests\TestPointSlidingGame.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Block.cpp" />
+    <ClCompile Include="Source Files\Game\Block.cpp" />
     <ClCompile Include="Source Files\Game\Game.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
