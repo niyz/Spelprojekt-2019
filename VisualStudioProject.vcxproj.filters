@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
+      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
+    </Filter>
+    <Filter Include="Header Files">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hh;hpp;hxx;hm;inl;inc;ipp;xsd</Extensions>
+    </Filter>
+    <Filter Include="Resource Files">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Header Files\Game">
+      <UniqueIdentifier>{1bd27d19-cf91-4e98-871b-033f1450a590}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Source">
+      <UniqueIdentifier>{fe644ef6-f992-46a7-bd54-8f4deb278e10}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\UnitTests">
+      <UniqueIdentifier>{2cd7d97b-629c-4fef-bd43-8a4765c677d4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Game">
+      <UniqueIdentifier>{3584c7ed-d052-4315-b600-19ca9f4f092f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\UnitTests">
+      <UniqueIdentifier>{cbdbeef5-4285-4ba5-bf4d-896b246fa0dc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Source">
+      <UniqueIdentifier>{65062392-0212-4567-a669-5d5f42d5bcd0}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Header Files\UnitTests\TestBlock.hpp">
+      <Filter>Header Files\UnitTests</Filter>
+    </ClInclude>
+    <ClInclude Include="Header Files\UnitTests\TestBlockBasedGame.hpp">
+      <Filter>Header Files\UnitTests</Filter>
+    </ClInclude>
+    <ClInclude Include="Header Files\UnitTests\TestingBase.hpp">
+      <Filter>Header Files\UnitTests</Filter>
+    </ClInclude>
+    <ClInclude Include="Header Files\UnitTests\TestNPuzzleGame.hpp">
+      <Filter>Header Files\UnitTests</Filter>
+    </ClInclude>
+    <ClInclude Include="Header Files\UnitTests\TestPointSlidingGame.hpp">
+      <Filter>Header Files\UnitTests</Filter>
+    </ClInclude>
+    <ClInclude Include="Header Files\Game\Block.hpp">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Header Files\Game\CImg.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Header Files\Game\Window.hpp">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Header Files\Game\WindowImplementation.hpp">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source Files\Game\Window.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Source Files\Game\Game.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Source Files\UnitTests\UnitTests.cpp">
+      <Filter>Source Files\UnitTests</Filter>
+    </ClCompile>
+    <ClCompile Include="Block.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
