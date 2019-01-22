@@ -6,4 +6,6 @@ Block::Block(std::uint16_t xPos, std::uint16_t yPos, std::uint16_t startValue, s
 	//this is a comment
 
 	//nah bruh, THIS is a comment.
+
+	//Cool bruhv, git 100% ok yes.
 }
