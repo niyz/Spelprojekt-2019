@@ -22,6 +22,7 @@
     <ClInclude Include="Header Files\Game\Block.hpp" />
     <ClInclude Include="Header Files\Game\BlockBasedGame.hpp" />
     <ClInclude Include="Header Files\Game\CImg.h" />
+    <ClInclude Include="Header Files\Game\NPuzzleGame.hpp" />
     <ClInclude Include="Header Files\Game\Window.hpp" />
     <ClInclude Include="Header Files\Game\WindowImplementation.hpp" />
     <ClInclude Include="Header Files\UnitTests\TestBlock.hpp" />
@@ -32,6 +33,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Header Files\Game\BlockBasedGame.cpp" />
+    <ClCompile Include="Header Files\Game\NPuzzleGame.cpp" />
     <ClCompile Include="Source Files\Game\Block.cpp" />
     <ClCompile Include="Source Files\Game\Game.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>

@@ -19,9 +19,9 @@ public:
 		//"Ska returnera en pekare till det block som finns på den angivna positionen"
 		//"Om inget annat block finns skall nullptr returneras.
 	Block* operator[](std::uint8_t index);
-	//wtf?
-	//"Ska returnera en pekare till det block som finns på den angivna positionen"
-	//"Om inget annat block finns skall nullptr returneras.
+		//wtf?
+		//"Ska returnera en pekare till det block som finns på den angivna positionen"
+		//"Om inget annat block finns skall nullptr returneras.
 
 	virtual ~BlockBasedGame();
 		//Dekonstruktor, virtuell för att den ärvs neråt, right?
@@ -41,24 +41,24 @@ public:
 	std::uint16_t CurrentScore();
 		//Ska se till att nuvarande poäng är uppdaterad först
 	void SetBoardState(const std::vector<Block*> &state);
-		//Om storleken på den inskickade std::vector 'r mindre än storleken på brädet ska ingen ändring göras.
+		//Om storleken på den inskickade std::vector är mindre än storleken på brädet ska ingen ändring göras.
 		//De inskickade block* får INTE sparas internt i BlockBasedGame
 
-	/*____________Virtuella Funktioner________________*/
+	/*____________(Rent) Virtuella Funktioner________________*/
 	
 	/*_____Flyttar på en eller flera spelbrickor utefter spelbeskrivningen____*/
-	virtual void MoveUp();
-	virtual void MoveDown();
-	virtual void MoveLeft();
-	virtual void MoveRight();
+	virtual void MoveUp() = 0;
+	virtual void MoveDown() = 0;
+	virtual void MoveLeft() = 0;
+	virtual void MoveRight() = 0;
 
 
-	virtual int GameStatus() const;
+	virtual int GameStatus() const = 0;
 		// -1 för att indikera förlust
 		// 0 för att indikera pågående
 		// 1 för att indikera vinst
 
-	virtual void UpdateScore();
+	virtual void UpdateScore() = 0;
 		//Ska uppdatera nuvarande poäng
 		//Ska se till så att listan med HighScore är sorterad
 

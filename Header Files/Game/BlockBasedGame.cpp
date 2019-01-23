@@ -2,7 +2,8 @@
 
 BlockBasedGame::BlockBasedGame(std::uint8_t puzzleSize, std::uint16_t gridSize)
 {
-	//hmm, beskrivningen är lite weird.
+	puzzleSize = puzzleSize * puzzleSize;
+	gridSize = gridSize;
 }
 
 const Block * BlockBasedGame::operator[](std::uint8_t index) const
@@ -19,6 +20,38 @@ Block * BlockBasedGame::operator[](std::uint8_t index)
 BlockBasedGame::~BlockBasedGame()
 {
 	//Commenting for the sake of push
+}
+
+std::uint8_t BlockBasedGame::GetPuzzleSize() const
+{
+	return this->puzzleSize;
+}
+
+std::uint16_t BlockBasedGame::GetGridSize() const
+{
+	return this->gridSize;
+}
+
+void BlockBasedGame::ReadHighscore(std::string filePath)
+{
+}
+
+void BlockBasedGame::SaveHighscore(std::string filePath)
+{
+}
+
+std::uint16_t BlockBasedGame::Highscore(std::uint8_t index)
+{
+	return std::uint16_t();
+}
+
+std::uint16_t BlockBasedGame::CurrentScore()
+{
+	return std::uint16_t();
+}
+
+void BlockBasedGame::SetBoardState(const std::vector<Block*>& state)
+{
 }
 
 void BlockBasedGame::MoveUp()
