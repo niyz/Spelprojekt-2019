@@ -55,6 +55,7 @@ bool Block::operator==(const Block &rhs) const
 
 bool Block::operator!=(const Block &rhs) const
 {
+	//Returns TRUE if the statement is false.
 	bool notEqual = false;
 	if (this->xPos != rhs.xPos ||
 		this->yPos != rhs.yPos ||

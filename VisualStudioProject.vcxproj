@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup Label="ProjectConfigurations">
     <ProjectConfiguration Include="Debug|Win32">
@@ -20,6 +20,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header Files\Game\Block.hpp" />
+    <ClInclude Include="Header Files\Game\BlockBasedGame.hpp" />
     <ClInclude Include="Header Files\Game\CImg.h" />
     <ClInclude Include="Header Files\Game\Window.hpp" />
     <ClInclude Include="Header Files\Game\WindowImplementation.hpp" />
@@ -30,6 +31,7 @@
     <ClInclude Include="Header Files\UnitTests\TestPointSlidingGame.hpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Header Files\Game\BlockBasedGame.cpp" />
     <ClCompile Include="Source Files\Game\Block.cpp" />
     <ClCompile Include="Source Files\Game\Game.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
