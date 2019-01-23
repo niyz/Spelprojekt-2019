@@ -5,18 +5,18 @@
 class Block
 {	
 	private:
-		std::uint16_t xPos;
+		std::uint16_t xPos; //uint16_t = Width of exactly 16, wtf?
 		std::uint16_t yPos;
 		std::uint16_t startValue;
-		std::uint8_t colourR, colourG, colourB;
+		std::uint8_t colourR, colourG, colourB;//uint16_t = Width of exactly 8, wtf?
 	public:
 		Block(std::uint16_t xPos, std::uint16_t yPos, std::uint16_t startValue, std::uint8_t colourR, std::uint8_t colourG, std::uint8_t colourB);
 			//Skall fungera som default konstruktor med rimliga startvärden.
 		Block(const Block&);
-			//Copy-konstruktor..? Deep/Shallow?
-		Block &operator=(const Block&);
+			//Copy-konstruktor, borde inte behövas skapas då vi inte har pekare..
+		Block &operator=(const Block&rhs);
 			//Tilldelningsoperator
-		bool operator==(const Block&) const;
+		bool operator==(const Block&rhs) const;
 			//Jämförelseoperator
 		bool operator!=(const Block&) const;
 			//Jämförelseoperator
