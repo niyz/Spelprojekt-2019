@@ -3,6 +3,7 @@
 #include <cstdint>
 #include "Block.hpp"
 #include <string>
+#include <vector>
 
 class BlockBasedGame //ABSTRAKT KLASS
 {

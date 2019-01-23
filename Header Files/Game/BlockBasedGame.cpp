@@ -19,3 +19,28 @@ Block * BlockBasedGame::operator[](std::uint8_t index)
 BlockBasedGame::~BlockBasedGame()
 {
 }
+
+void BlockBasedGame::MoveUp()
+{
+}
+
+void BlockBasedGame::MoveDown()
+{
+}
+
+void BlockBasedGame::MoveLeft()
+{
+}
+
+void BlockBasedGame::MoveRight()
+{
+}
+
+int BlockBasedGame::GameStatus() const
+{
+	return 0;
+}
+
+void BlockBasedGame::UpdateScore()
+{
+}
