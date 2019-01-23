@@ -18,6 +18,7 @@ Block * BlockBasedGame::operator[](std::uint8_t index)
 
 BlockBasedGame::~BlockBasedGame()
 {
+	//Commenting for the sake of push
 }
 
 void BlockBasedGame::MoveUp()
