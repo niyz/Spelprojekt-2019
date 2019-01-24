@@ -8,11 +8,11 @@ class Block
 		std::uint16_t xPos; //uint16_t = Width of exactly 16, wtf?
 		std::uint16_t yPos;
 		std::uint16_t startValue;
-		std::uint8_t colourR, colourG, colourB;//uint16_t = Width of exactly 8, wtf?
+		std::uint8_t colourR, colourG, colourB; //uint8_t = Width of exactly 8, wtf?
 	public:
 		Block(std::uint16_t xPos, std::uint16_t yPos, std::uint16_t startValue, std::uint8_t colourR, std::uint8_t colourG, std::uint8_t colourB);
 			//Skall fungera som default konstruktor med rimliga startvärden.
-		Block(const Block&);
+		Block(const Block&rhs);
 			//Copy-konstruktor, borde inte behövas skapas då vi inte har pekare..
 		Block &operator=(const Block&rhs);
 			//Tilldelningsoperator
@@ -32,7 +32,7 @@ class Block
 		std::uint8_t GetColourB() const;
 
 		void ColourAsArray(std::uint8_t *colour) const;
-			//Antag att denna pekare är till en array med 3 platser (RGB)
+			//Antag att denna pekare är till en array med 3 platser (RGB).Get-funktion?
 
 		void SetXPosition(std::uint16_t);
 		void SetYPosition(std::uint16_t);

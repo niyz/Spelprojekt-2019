@@ -60,10 +60,13 @@
     <ClInclude Include="Header Files\Game\WindowImplementation.hpp">
       <Filter>Header Files\Game</Filter>
     </ClInclude>
-    <ClInclude Include="Header Files\Game\BlockBasedGame.hpp">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Header Files\Game\NPuzzleGame.hpp">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Header Files\Game\PointSlidingGame.hpp">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Header Files\Game\BlockBasedGame.hpp">
       <Filter>Header Files\Game</Filter>
     </ClInclude>
   </ItemGroup>
@@ -80,11 +83,14 @@
     <ClCompile Include="Source Files\Game\Block.cpp">
       <Filter>Source Files\Game</Filter>
     </ClCompile>
-    <ClCompile Include="Header Files\Game\BlockBasedGame.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Source Files\Game\BlockBasedGame.cpp">
+      <Filter>Source Files\Game</Filter>
     </ClCompile>
-    <ClCompile Include="Header Files\Game\NPuzzleGame.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Source Files\Game\NPuzzleGame.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Source Files\Game\PointSlidingGame.cpp">
+      <Filter>Source Files\Game</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

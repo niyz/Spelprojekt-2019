@@ -74,7 +74,7 @@ std::uint16_t Block::GetXPosition() const
 
 std::uint16_t Block::GetYPosition() const
 {
-	return this->yPos;;
+	return this->yPos;
 }
 
 std::uint16_t Block::GetValue() const
@@ -99,7 +99,9 @@ std::uint8_t Block::GetColourB() const
 
 void Block::ColourAsArray(std::uint8_t * colour) const
 {
-	
+	colour[0] = GetColourR();
+	colour[1] = GetColourG();
+	colour[2] = GetColourB();
 }
 
 void Block::SetXPosition(std::uint16_t xPosArg)
@@ -110,7 +112,6 @@ void Block::SetXPosition(std::uint16_t xPosArg)
 void Block::SetYPosition(std::uint16_t yPosArg)
 {
 	this->yPos = yPosArg;
-
 }
 
 void Block::SetValue(std::uint16_t startValueArg)
@@ -131,10 +132,11 @@ void Block::SetColourG(std::uint8_t colourGArg)
 void Block::SetColourB(std::uint8_t colourBArg)
 {
 	this->colourB = colourBArg;
-
 }
 
 void Block::SetColour(std::uint8_t * colour)
 {
-	// ?
+	this->colourR = colour[0];
+	this->colourG = colour[1];
+	this->colourB = colour[2];
 }

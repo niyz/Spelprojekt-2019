@@ -1,13 +1,14 @@
-#include "NPuzzleGame.hpp"
+#include "..\..\Header Files\Game\NPuzzleGame.hpp"
 
 NPuzzleGame::NPuzzleGame(std::uint8_t puzzleSize, std::uint16_t gridSize)
-	:BlockBasedGame(puzzleSize * puzzleSize, gridSize)
+	:BlockBasedGame(puzzleSize, gridSize)
 {
+	//std::vector<std::vector<Block>> gameGrid(puzzleSize, std::vector<Block>(puzzleSize));
 }
 
 NPuzzleGame::~NPuzzleGame()
 {
-	//Kommer denna ta bort 
+	//another
 }
 
 void NPuzzleGame::MoveUp()
