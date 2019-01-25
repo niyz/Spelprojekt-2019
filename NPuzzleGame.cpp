@@ -13,6 +13,7 @@ NPuzzleGame::~NPuzzleGame()
 
 void NPuzzleGame::MoveUp()
 {
+	//
 }
 
 void NPuzzleGame::MoveDown()
