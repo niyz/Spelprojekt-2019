@@ -20,10 +20,11 @@ public:
 	NPuzzleGame(std::uint8_t puzzleSize, std::uint16_t gridSize);
 	~NPuzzleGame();
 
-	/*___________Funktioner______________*/
+	/*____________________Funktioner________________________*/
 
 	void MoveUp();
 		//Förflyttar brickan nedanför den tomma platsen uppåt
+
 	void MoveDown();
 	//Förflyttar brickan ovanför den tomma platsen nedåt
 
@@ -37,6 +38,7 @@ public:
 		//Returnerar 1 om alla brickor är på korrekt plats
 		//0 annars
 	void UpdateScore();
+
 };
 
 #endif

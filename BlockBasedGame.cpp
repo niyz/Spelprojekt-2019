@@ -4,6 +4,9 @@ BlockBasedGame::BlockBasedGame(std::uint8_t puzzleSize, std::uint16_t gridSize)
 {
 	this->puzzleSize = puzzleSize;
 	this->gridSize = gridSize;
+	this->nrOfBlocks = puzzleSize * puzzleSize;
+
+	//Ska man skapa puzzleSize^2 antal block här och skicka med till subklassen?
 
 }
 
@@ -15,6 +18,8 @@ const Block * BlockBasedGame::operator[](std::uint8_t index) const
 
 Block * BlockBasedGame::operator[](std::uint8_t index)
 {
+	Block* indexPtr = nullptr;
+
 	return nullptr;
 }
 

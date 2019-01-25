@@ -10,10 +10,9 @@ class BlockBasedGame //ABSTRAKT KLASS
 private:
 	std::uint8_t puzzleSize;
 	std::uint16_t gridSize;
+	int nrOfBlocks;
 	int HighScoreFile[5]; 
 	
-
-
 public:
 	BlockBasedGame(std::uint8_t puzzleSize, std::uint16_t gridSize);
 
