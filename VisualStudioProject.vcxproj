@@ -19,30 +19,30 @@
     </ProjectConfiguration>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Header Files\Game\Block.hpp" />
-    <ClInclude Include="Header Files\Game\BlockBasedGame.hpp" />
-    <ClInclude Include="Header Files\Game\CImg.h" />
-    <ClInclude Include="Header Files\Game\NPuzzleGame.hpp" />
-    <ClInclude Include="Header Files\Game\PointSlidingGame.hpp" />
-    <ClInclude Include="Header Files\Game\Window.hpp" />
-    <ClInclude Include="Header Files\Game\WindowImplementation.hpp" />
-    <ClInclude Include="Header Files\UnitTests\TestBlock.hpp" />
-    <ClInclude Include="Header Files\UnitTests\TestBlockBasedGame.hpp" />
-    <ClInclude Include="Header Files\UnitTests\TestingBase.hpp" />
-    <ClInclude Include="Header Files\UnitTests\TestNPuzzleGame.hpp" />
-    <ClInclude Include="Header Files\UnitTests\TestPointSlidingGame.hpp" />
+    <ClInclude Include="Block.hpp" />
+    <ClInclude Include="BlockBasedGame.hpp" />
+    <ClInclude Include="CImg.h" />
+    <ClInclude Include="NPuzzleGame.hpp" />
+    <ClInclude Include="PointSlidingGame.hpp" />
+    <ClInclude Include="Window.hpp" />
+    <ClInclude Include="WindowImplementation.hpp" />
+    <ClInclude Include="TestBlock.hpp" />
+    <ClInclude Include="TestBlockBasedGame.hpp" />
+    <ClInclude Include="TestingBase.hpp" />
+    <ClInclude Include="TestNPuzzleGame.hpp" />
+    <ClInclude Include="TestPointSlidingGame.hpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source Files\Game\BlockBasedGame.cpp" />
-    <ClCompile Include="Source Files\Game\Block.cpp" />
-    <ClCompile Include="Source Files\Game\Game.cpp">
+    <ClCompile Include="BlockBasedGame.cpp" />
+    <ClCompile Include="Block.cpp" />
+    <ClCompile Include="Game.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
-    <ClCompile Include="Source Files\Game\NPuzzleGame.cpp" />
-    <ClCompile Include="Source Files\Game\PointSlidingGame.cpp" />
-    <ClCompile Include="Source Files\UnitTests\UnitTests.cpp" />
-    <ClCompile Include="Source Files\Game\Window.cpp" />
+    <ClCompile Include="NPuzzleGame.cpp" />
+    <ClCompile Include="PointSlidingGame.cpp" />
+    <ClCompile Include="UnitTests.cpp" />
+    <ClCompile Include="Window.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>

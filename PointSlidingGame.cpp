@@ -1,4 +1,4 @@
-#include "..\..\Header Files\Game\PointSlidingGame.hpp"
+#include "PointSlidingGame.hpp"
 
 PointSlidingGame::PointSlidingGame(std::uint8_t puzzleSize, std::uint16_t gridSize, std::uint16_t goalScore)
 	:BlockBasedGame(puzzleSize, gridSize)

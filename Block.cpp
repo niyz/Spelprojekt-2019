@@ -1,4 +1,4 @@
-#include "..\..\Header Files\Game\Block.hpp"
+#include "Block.hpp"
 
 
 Block::Block(std::uint16_t xPos, std::uint16_t yPos, std::uint16_t startValue, std::uint8_t colourR, std::uint8_t colourG, std::uint8_t colourB)

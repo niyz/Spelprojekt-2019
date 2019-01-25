@@ -1,9 +1,9 @@
 
 #include <iostream>
 #include <string>
-#include "..\..\Header Files\Game\Window.hpp"
-#include "..\..\Header Files\Game\NPuzzleGame.hpp"
-#include "..\..\Header Files\Game\PointSlidingGame.hpp"
+#include "Window.hpp"
+#include "NPuzzleGame.hpp"
+#include "PointSlidingGame.hpp"
 
 int main(int argc, const char* argv[])
 {

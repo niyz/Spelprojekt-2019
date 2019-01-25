@@ -1,4 +1,4 @@
-#include "..\..\Header Files\Game\NPuzzleGame.hpp"
+#include "NPuzzleGame.hpp"
 
 NPuzzleGame::NPuzzleGame(std::uint8_t puzzleSize, std::uint16_t gridSize)
 	:BlockBasedGame(puzzleSize, gridSize)

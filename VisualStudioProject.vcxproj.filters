@@ -33,64 +33,64 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Header Files\UnitTests\TestBlock.hpp">
+    <ClInclude Include="Block.hpp">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="BlockBasedGame.hpp">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="CImg.h">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="NPuzzleGame.hpp">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="PointSlidingGame.hpp">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="Window.hpp">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="WindowImplementation.hpp">
+      <Filter>Header Files\Game</Filter>
+    </ClInclude>
+    <ClInclude Include="TestBlock.hpp">
       <Filter>Header Files\UnitTests</Filter>
     </ClInclude>
-    <ClInclude Include="Header Files\UnitTests\TestBlockBasedGame.hpp">
+    <ClInclude Include="TestBlockBasedGame.hpp">
       <Filter>Header Files\UnitTests</Filter>
     </ClInclude>
-    <ClInclude Include="Header Files\UnitTests\TestingBase.hpp">
+    <ClInclude Include="TestingBase.hpp">
       <Filter>Header Files\UnitTests</Filter>
     </ClInclude>
-    <ClInclude Include="Header Files\UnitTests\TestNPuzzleGame.hpp">
+    <ClInclude Include="TestNPuzzleGame.hpp">
       <Filter>Header Files\UnitTests</Filter>
     </ClInclude>
-    <ClInclude Include="Header Files\UnitTests\TestPointSlidingGame.hpp">
+    <ClInclude Include="TestPointSlidingGame.hpp">
       <Filter>Header Files\UnitTests</Filter>
-    </ClInclude>
-    <ClInclude Include="Header Files\Game\Block.hpp">
-      <Filter>Header Files\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Header Files\Game\CImg.h">
-      <Filter>Header Files\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Header Files\Game\Window.hpp">
-      <Filter>Header Files\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Header Files\Game\WindowImplementation.hpp">
-      <Filter>Header Files\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Header Files\Game\NPuzzleGame.hpp">
-      <Filter>Header Files\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Header Files\Game\PointSlidingGame.hpp">
-      <Filter>Header Files\Game</Filter>
-    </ClInclude>
-    <ClInclude Include="Header Files\Game\BlockBasedGame.hpp">
-      <Filter>Header Files\Game</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Source Files\Game\Window.cpp">
+    <ClCompile Include="Block.cpp">
       <Filter>Source Files\Game</Filter>
     </ClCompile>
-    <ClCompile Include="Source Files\Game\Game.cpp">
+    <ClCompile Include="BlockBasedGame.cpp">
       <Filter>Source Files\Game</Filter>
     </ClCompile>
-    <ClCompile Include="Source Files\UnitTests\UnitTests.cpp">
+    <ClCompile Include="Game.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="NPuzzleGame.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="PointSlidingGame.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="Window.cpp">
+      <Filter>Source Files\Game</Filter>
+    </ClCompile>
+    <ClCompile Include="UnitTests.cpp">
       <Filter>Source Files\UnitTests</Filter>
-    </ClCompile>
-    <ClCompile Include="Source Files\Game\Block.cpp">
-      <Filter>Source Files\Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Source Files\Game\BlockBasedGame.cpp">
-      <Filter>Source Files\Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Source Files\Game\NPuzzleGame.cpp">
-      <Filter>Source Files\Game</Filter>
-    </ClCompile>
-    <ClCompile Include="Source Files\Game\PointSlidingGame.cpp">
-      <Filter>Source Files\Game</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

@@ -1,5 +1,5 @@
-#include "..\..\Header Files\Game\Window.hpp"
-#include "..\..\Header Files\Game\WindowImplementation.hpp"
+#include "Window.hpp"
+#include "WindowImplementation.hpp"
 
 Window::Window(uint16_t width, uint16_t height, Key closingKey)
     : pImplementation(std::make_unique<Implementation>(width, height, closingKey))

@@ -1,4 +1,4 @@
-#include "..\..\Header Files\Game\BlockBasedGame.hpp"
+#include "BlockBasedGame.hpp"
 
 BlockBasedGame::BlockBasedGame(std::uint8_t puzzleSize, std::uint16_t gridSize)
 {

@@ -1,5 +1,5 @@
-#ifndef Block_h
-#define Block_h
+#ifndef BLOCK_H
+#define BLOCK_H
 #include <cstdint>
 
 class Block

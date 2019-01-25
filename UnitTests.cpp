@@ -1,7 +1,7 @@
-#include "..\..\Header Files\UnitTests\TestBlock.hpp"
-#include "..\..\Header Files\UnitTests\TestBlockBasedGame.hpp"
-#include "..\..\Header Files\UnitTests\TestNPuzzleGame.hpp"
-#include "..\..\Header Files\UnitTests\TestPointSlidingGame.hpp"
+#include "TestBlock.hpp"
+#include "TestBlockBasedGame.hpp"
+#include "TestNPuzzleGame.hpp"
+#include "TestPointSlidingGame.hpp"
 #include <iostream>
 
 int main()
