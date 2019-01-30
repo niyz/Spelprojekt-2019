@@ -13,7 +13,6 @@ flytta sedan blocken ett ojämnt antal gånger
 class NPuzzleGame : public BlockBasedGame //Child class
 {
 private:
-	std::vector<std::vector<Block>> gameGrid;
 	//Spelbrädet återfinns i respektive subklass, övriga medlemsvariabler finns i basklassen.
 
 public:

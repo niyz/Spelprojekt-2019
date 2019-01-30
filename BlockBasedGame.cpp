@@ -2,13 +2,19 @@
 
 BlockBasedGame::BlockBasedGame(std::uint8_t puzzleSize, std::uint16_t gridSize)
 {
+	//Initiera medlemsvariabler med de argument som skickas med konstruktorn.
 	this->puzzleSize = puzzleSize;
 	this->gridSize = gridSize;
-	this->nrOfBlocks = puzzleSize * puzzleSize;
 
-	//Ska man skapa puzzleSize^2 antal block här och skicka med till subklassen?
-
+	for (int i = 0; i < puzzleSize; i++) //Tillfällig 2 så vi får en 2x2 vector
+	{
+		for (int j = 0; j < puzzleSize; j++)
+		{
+			gameGrid[i][j] = new Block(i, j, 0, 0, 0, 0);
+		}
+	}
 }
+
 
 const Block * BlockBasedGame::operator[](std::uint8_t index) const
 {

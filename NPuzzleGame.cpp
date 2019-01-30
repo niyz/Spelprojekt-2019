@@ -3,7 +3,6 @@
 NPuzzleGame::NPuzzleGame(std::uint8_t puzzleSize, std::uint16_t gridSize)
 	:BlockBasedGame(puzzleSize, gridSize)
 {
-	//std::vector<std::vector<Block>> gameGrid(puzzleSize, std::vector<Block>(puzzleSize));
 }
 
 NPuzzleGame::~NPuzzleGame()
