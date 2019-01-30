@@ -54,15 +54,13 @@ Block * BlockBasedGame::operator[](std::uint8_t index)
 
 BlockBasedGame::~BlockBasedGame()
 {
-	//Commenting for the sake of push
-	for (int i = 0; i < puzzleSize; i++)
+	for (int i = 0; i < this->GetPuzzleSize(); i++)
 	{
-		for (int j = 0; j < puzzleSize; j++)
+		for (int j = 0; j < this->GetPuzzleSize(); j++)
 		{
-			delete gameGrid[i][j];
+			delete this->gameGrid[i][j];
 		}
 	}
-	// delete [] gameGrid;
 }
 
 std::uint8_t BlockBasedGame::GetPuzzleSize() const

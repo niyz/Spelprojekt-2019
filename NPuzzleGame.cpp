@@ -4,21 +4,21 @@ NPuzzleGame::NPuzzleGame(std::uint8_t puzzleSize, std::uint16_t gridSize)
 	:BlockBasedGame(puzzleSize, gridSize)
 {
 	int index = 0;
-	for (int i = 0; i < puzzleSize; i++)
-	{
-		for (int j = 0; j < puzzleSize - 1; j++)
+	for (int x = 0; x < puzzleSize; x++)
+	{ 
+		for (int y = 0; y < puzzleSize; y++)
 		{
-			if (i == puzzleSize && j == puzzleSize)
+			if (x == puzzleSize -1 && y == puzzleSize - 1)
 			{
-				this->gameGrid[i][j]->SetXPosition(i);
-				this->gameGrid[i][j]->SetYPosition(j);
-				this->gameGrid[i][j]->SetValue(NULL);
+				this->gameGrid[x][y]->SetYPosition(y); //Sätter y då den betar av J kön först
+				this->gameGrid[x][y]->SetXPosition(x);
+				this->gameGrid[x][y]->SetValue(NULL);
 			}
 			else
 			{
-				this->gameGrid[i][j]->SetXPosition(i);
-				this->gameGrid[i][j]->SetYPosition(j);
-				this->gameGrid[i][j]->SetValue(index++);
+				this->gameGrid[x][y]->SetYPosition(y);//Sätter y då den betar av J kön först
+				this->gameGrid[x][y]->SetXPosition(x);
+				this->gameGrid[x][y]->SetValue(index++);
 			}
 		}
 	}
