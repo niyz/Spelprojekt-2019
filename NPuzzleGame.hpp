@@ -23,7 +23,6 @@ public:
 
 	void MoveUp();
 		//Förflyttar brickan nedanför den tomma platsen uppåt
-
 	void MoveDown();
 	//Förflyttar brickan ovanför den tomma platsen nedåt
 

@@ -43,12 +43,7 @@ Block & Block::operator=(const Block &rhs)
 bool Block::operator==(const Block &rhs) const
 {
 	bool equal = false;
-	if (this->xPos == rhs.xPos &&
-		this->yPos == rhs.yPos &&
-		this->startValue == rhs.startValue &&
-		this->colourR == rhs.colourR &&
-		this->colourG == rhs.colourG &&
-		this->colourB == rhs.colourB)
+	if (this->startValue == rhs.startValue)
 		equal = true;
 	return equal;
 }

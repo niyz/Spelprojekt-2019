@@ -10,15 +10,15 @@ class BlockBasedGame //ABSTRAKT KLASS
 private:
 	std::uint8_t puzzleSize;
 	std::uint16_t gridSize;
-	std::vector<std::vector<Block*>> gameGrid;
 	std::uint16_t goalScore;
-	//Adding notes to push
-	
+
+protected:
+	std::vector<std::vector<Block*>> gameGrid;
+
 public:
 	BlockBasedGame(std::uint8_t puzzleSize, std::uint16_t gridSize);
 
 	const Block* operator[](std::uint8_t index) const;
-		//wtf?dasd
 		//"Ska returnera en pekare till det block som finns på den angivna positionen"
 		//"Om inget annat block finns skall nullptr returneras.
 	Block* operator[](std::uint8_t index);
