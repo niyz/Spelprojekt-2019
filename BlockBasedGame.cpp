@@ -107,37 +107,31 @@ void BlockBasedGame::SetBoardState(const std::vector<Block*>& state)
 
 void BlockBasedGame::MoveUp()
 {
-	//TODO
 
 }
 
 void BlockBasedGame::MoveDown()
 {
-	//TODO
 
 }
 
 void BlockBasedGame::MoveLeft()
 {
-	//TODO
 
 }
 
 void BlockBasedGame::MoveRight()
 {
-	//TODO
 
 }
 
 int BlockBasedGame::GameStatus() const
 {
-	//TODO
 
 	return 0;
 }
 
 void BlockBasedGame::UpdateScore()
 {
-	//TODO
 
 }
