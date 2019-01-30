@@ -9,6 +9,7 @@ class Block
 		std::uint16_t yPos;
 		std::uint16_t startValue;
 		std::uint8_t colourR, colourG, colourB; //uint8_t = Width of exactly 8, wtf?
+		//tjena
 	public:
 		Block(std::uint16_t xPos, std::uint16_t yPos, std::uint16_t startValue, std::uint8_t colourR, std::uint8_t colourG, std::uint8_t colourB);
 			//Skall fungera som default konstruktor med rimliga startvärden.
