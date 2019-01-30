@@ -17,7 +17,7 @@ public:
 	BlockBasedGame(std::uint8_t puzzleSize, std::uint16_t gridSize);
 
 	const Block* operator[](std::uint8_t index) const;
-		//wtf?
+		//wtf?dasd
 		//"Ska returnera en pekare till det block som finns på den angivna positionen"
 		//"Om inget annat block finns skall nullptr returneras.
 	Block* operator[](std::uint8_t index);
