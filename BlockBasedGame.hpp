@@ -12,6 +12,7 @@ private:
 	std::uint16_t gridSize;
 	std::vector<std::vector<Block*>> gameGrid;
 	std::uint16_t goalScore;
+	//Adding notes to push
 	
 public:
 	BlockBasedGame(std::uint8_t puzzleSize, std::uint16_t gridSize);
