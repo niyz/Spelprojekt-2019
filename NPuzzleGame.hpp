@@ -19,6 +19,8 @@ public:
 	NPuzzleGame(std::uint8_t puzzleSize, std::uint16_t gridSize);
 	~NPuzzleGame();
 
+	NPuzzleGame(const NPuzzleGame&) = delete;
+	NPuzzleGame& operator=(const NPuzzleGame&) = delete;
 	/*____________________Funktioner________________________*/
 
 	void MoveUp();

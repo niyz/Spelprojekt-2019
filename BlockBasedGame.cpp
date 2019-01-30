@@ -5,11 +5,13 @@ BlockBasedGame::BlockBasedGame(std::uint8_t puzzleSize, std::uint16_t gridSize)
 	//Initiera medlemsvariabler med de argument som skickas med konstruktorn.
 	this->puzzleSize = puzzleSize;
 	this->gridSize = gridSize;
-
+	gameGrid.resize(puzzleSize);
 	for (int i = 0; i < puzzleSize; i++) //Tillfällig 2 så vi får en 2x2 vector
 	{
+		gameGrid[i].resize(puzzleSize);
 		for (int j = 0; j < puzzleSize; j++)
 		{
+
 			gameGrid[i][j] = new Block(i, j, 0, 0, 0, 0);
 			//xPos, yPos, startValue, r,g,b
 		}
@@ -20,22 +22,34 @@ BlockBasedGame::BlockBasedGame(std::uint8_t puzzleSize, std::uint16_t gridSize)
 const Block * BlockBasedGame::operator[](std::uint8_t index) const
 {
 	//No idea
-
+	Block* indexValuePtr = nullptr;;
 	for (int i = 0; i < this->puzzleSize; i++)
 	{
 		for (int j = 0; j < this->puzzleSize; j++)
 		{
-			//gameGrid[i][j].get mailat ajx om denna.
+			if (gameGrid[i][j]->GetValue() == index)
+			{
+				indexValuePtr = gameGrid[i][j];
+			}
 		}
 	}
-	return nullptr;
+	return indexValuePtr;
 }
 
 Block * BlockBasedGame::operator[](std::uint8_t index)
 {
-	Block* indexPtr = nullptr;
-
-	return nullptr;
+	Block* indexValuePtr = nullptr;;
+	for (int i = 0; i < this->puzzleSize; i++)
+	{
+		for (int j = 0; j < this->puzzleSize; j++)
+		{
+			if (gameGrid[i][j]->GetValue() == index)
+			{
+				indexValuePtr = gameGrid[i][j];
+			}
+		}
+	}
+	return indexValuePtr;
 }
 
 BlockBasedGame::~BlockBasedGame()

@@ -35,9 +35,9 @@ class Block
 		void ColourAsArray(std::uint8_t *colour) const;
 			//Antag att denna pekare är till en array med 3 platser (RGB).Get-funktion?
 
-		void SetXPosition(std::uint16_t);
-		void SetYPosition(std::uint16_t);
-		void SetValue(std::uint16_t);
+		void SetXPosition(std::uint16_t xPos);
+		void SetYPosition(std::uint16_t yPos);
+		void SetValue(std::uint16_t startValue);
 
 		void SetColourR(std::uint8_t);
 		void SetColourG(std::uint8_t);

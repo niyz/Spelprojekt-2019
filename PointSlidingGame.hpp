@@ -14,6 +14,8 @@ public:
 	//goalScore är en tvåpotens
 	~PointSlidingGame();
 
+	PointSlidingGame(const PointSlidingGame&) = delete;
+	PointSlidingGame& operator=(const PointSlidingGame&) = delete;
 
 	/*_______Funktioner______*/
 	void MoveUp();
