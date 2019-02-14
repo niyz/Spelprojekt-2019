@@ -36,6 +36,7 @@ GENERATE_SAME_NAME_HAS_MEMBER_FUNCTION(MoveLeft)
 GENERATE_SAME_NAME_HAS_MEMBER_FUNCTION(MoveRight)
 GENERATE_SAME_NAME_HAS_CONST_MEMBER_FUNCTION(GameStatus)
 GENERATE_SAME_NAME_HAS_MEMBER_FUNCTION(UpdateScore)
+GENERATE_SAME_NAME_HAS_MEMBER_FUNCTION(SetBoardState)
 
 static constexpr bool NPuzzleGame_has_MoveUp = has_MoveUp<NPuzzleGame, void>::value;
 static constexpr bool NPuzzleGame_has_MoveDown = has_MoveDown<NPuzzleGame, void>::value;
@@ -43,6 +44,7 @@ static constexpr bool NPuzzleGame_has_MoveLeft = has_MoveLeft<NPuzzleGame, void>
 static constexpr bool NPuzzleGame_has_MoveRight = has_MoveRight<NPuzzleGame, void>::value;
 static constexpr bool NPuzzleGame_has_GameStatus = has_const_GameStatus<NPuzzleGame, int>::value;
 static constexpr bool NPuzzleGame_has_UpdateScore = has_UpdateScore<NPuzzleGame, void>::value;
+static constexpr bool NPuzzleGame_has_SetBoardState = has_SetBoardState<BlockBasedGame, void, const std::vector<Block*> &>::value;
 
 constexpr bool ControlNPuzzleGameignatures()
 {
@@ -50,7 +52,8 @@ constexpr bool ControlNPuzzleGameignatures()
             && NPuzzleGame_has_constructor && !NPuzzleGame_has_default_constructor 
             && !NPuzzleGame_has_copy_constructor && !NPuzzleGame_has_copy_assignment_constructor 
             && NPuzzleGame_has_MoveUp && NPuzzleGame_has_MoveDown && NPuzzleGame_has_MoveLeft 
-            && NPuzzleGame_has_MoveRight && NPuzzleGame_has_GameStatus && NPuzzleGame_has_UpdateScore;
+            && NPuzzleGame_has_MoveRight && NPuzzleGame_has_GameStatus && NPuzzleGame_has_UpdateScore
+            && NPuzzleGame_has_SetBoardState;
 }
 void NPuzzleGameUnitTestingPrintErrors()
 {
@@ -76,6 +79,9 @@ void NPuzzleGameUnitTestingPrintErrors()
         std::cout << "\tNPuzzleGame's GameStatus-function either missing or does not follow the signature given." << std::endl;
     if constexpr (!NPuzzleGame_has_UpdateScore)
         std::cout << "\tNPuzzleGame's UpdateScore-function either missing or does not follow the signature given." << std::endl;
+    if constexpr (!NPuzzleGame_has_SetBoardState)
+        std::cout << "\tNPuzzleGame's SetBoardState-function either missing or does not follow the signature given." << std::endl;
+
 }
 
 template <typename T = NPuzzleGame>

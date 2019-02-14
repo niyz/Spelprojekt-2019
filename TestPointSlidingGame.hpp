@@ -36,6 +36,7 @@ GENERATE_SAME_NAME_HAS_MEMBER_FUNCTION(MoveLeft)
 GENERATE_SAME_NAME_HAS_MEMBER_FUNCTION(MoveRight)
 GENERATE_SAME_NAME_HAS_CONST_MEMBER_FUNCTION(GameStatus)
 GENERATE_SAME_NAME_HAS_MEMBER_FUNCTION(UpdateScore)
+GENERATE_SAME_NAME_HAS_MEMBER_FUNCTION(SetBoardState)
 
 static constexpr bool PointSlidingGame_has_MoveUp = has_MoveUp<PointSlidingGame, void>::value;
 static constexpr bool PointSlidingGame_has_MoveDown = has_MoveDown<PointSlidingGame, void>::value;
@@ -43,6 +44,7 @@ static constexpr bool PointSlidingGame_has_MoveLeft = has_MoveLeft<PointSlidingG
 static constexpr bool PointSlidingGame_has_MoveRight = has_MoveRight<PointSlidingGame, void>::value;
 static constexpr bool PointSlidingGame_has_GameStatus = has_const_GameStatus<PointSlidingGame, int>::value;
 static constexpr bool PointSlidingGame_has_UpdateScore = has_UpdateScore<PointSlidingGame, void>::value;
+static constexpr bool PointSlidingGame_has_SetBoardState = has_SetBoardState<BlockBasedGame, void, const std::vector<Block*> &>::value;
 
 constexpr bool ControlPointSlidingGameSignatures()
 {
@@ -50,7 +52,8 @@ constexpr bool ControlPointSlidingGameSignatures()
             && PointSlidingGame_has_constructor && !PointSlidingGame_has_default_constructor 
             && !PointSlidingGame_has_copy_constructor && !PointSlidingGame_has_copy_assignment_constructor 
             && PointSlidingGame_has_MoveUp && PointSlidingGame_has_MoveDown && PointSlidingGame_has_MoveLeft 
-            && PointSlidingGame_has_MoveRight && PointSlidingGame_has_GameStatus && PointSlidingGame_has_UpdateScore;
+            && PointSlidingGame_has_MoveRight && PointSlidingGame_has_GameStatus && PointSlidingGame_has_UpdateScore
+            && PointSlidingGame_has_SetBoardState;
 }
 void PointSlidingGameUnitTestingPrintErrors()
 {
@@ -76,6 +79,9 @@ void PointSlidingGameUnitTestingPrintErrors()
         std::cout << "\tPointSlidingGame's GameStatus-function either missing or does not follow the signature given." << std::endl;
     if constexpr (!PointSlidingGame_has_UpdateScore)
         std::cout << "\tPointSlidingGame's UpdateScore-function either missing or does not follow the signature given." << std::endl;
+    if constexpr (!PointSlidingGame_has_SetBoardState)
+        std::cout << "\tPointSlidingGame's SetBoardState-function either missing or does not follow the signature given." << std::endl;
+
 }
 
 template <typename T = PointSlidingGame>
