@@ -99,8 +99,65 @@ std::uint16_t BlockBasedGame::CurrentScore()
 
 void BlockBasedGame::SetBoardState(const std::vector<Block*>& state)
 {
-	//TODO
 
+	size_t gridSize = 0; //Håller storleken på hela brädet
+	for (int i = 0; i < gameGrid.size(); i++)
+	{
+		gridSize += gameGrid[i].size();
+	}
+	size_t sideSize = gameGrid.size(); //Håller storleken på en sida
+	if (state.size() >= gridSize) //Jämförelse med hela brädet då A använder sig av 1d vector
+	{
+		//size_t diff = state.size() - gridSize;
+		//std::cout << "DIFF: " << diff << std::endl;
+		gameGrid.resize(sideSize); //fixa antal kolumner
+		for (int i = 0; i < sideSize; i++)
+		{
+			gameGrid[i].resize(sideSize); //fixar antal rader
+		}
+		for (int i = 0; i < sideSize; i++)
+		{
+			for (int j = 0; j < sideSize; j++)
+			{
+				this->gameGrid[i][j]->SetValue(state[i]->GetValue()); //Uppdaterar värdet på griddet, antar att alla platser ska uppdateras gentemot det inskickade brädet.
+			}
+		}
+		
+	}
+
+
+
+	//if (state.size() >= this->gameGrid.size())
+	//{
+	//	//orig = 3*3 = 9
+	//	//ny = 16 (4*4)
+	//	// nya tiles 7
+	//	std::cout << ("stir it up");
+	//	//Hämta storleken på den nya gridden
+	//	int stateSize = state.size();
+
+	//	//statesize = 16
+	//	//16 / 3 = 5
+	//		//percolumnin = 5;
+	//	int perColumnInt = this->GetPuzzleSize() / stateSize;
+
+	//	//löser 2 nya kolumner med hittils 3 i varje = 6
+	//	// 9-6 = 3
+	//	this->gameGrid.resize(perColumnInt);
+
+	//	for (int i = 0; i < this->gameGrid.size(); i++)
+	//	{
+	//		gameGrid[i].resize(perColumnInt);
+	//	}
+	//	for (int i = 0; i < state.size(); i++)
+	//	{
+	//		
+	//	}
+	//}
+	//else
+	//{
+	//	std::cout << ("A wadodem a wadodemdemdem");
+	//}
 }
 
 void BlockBasedGame::MoveUp()

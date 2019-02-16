@@ -4,6 +4,7 @@
 #include "Block.hpp"
 #include <string>
 #include <vector>
+#include <iostream>
 
 class BlockBasedGame //ABSTRAKT KLASS
 {

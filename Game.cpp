@@ -16,7 +16,7 @@ int main(int argc, const char* argv[])
 		std::cout << "Not enough arguments." << std::endl;
 		return -1;
 	}
-	else if (argc == 2)d
+	else if (argc == 2)
 	{
 		std::cout << "Starting NPuzzleGame with size " << argv[1] << std::endl;
 		game = new NPuzzleGame(size, 900/size);
