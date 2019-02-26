@@ -15,15 +15,15 @@ Block::Block(const Block &rhs)
 {
 	//NOTE: Behöver ingen copy konstruktor då denna skapas per automatik vid kompilering. Dock en shallow copy, så hade vi haft med t.ex. pekare med som medlemsvariabler hade en Deep Copy behövts att göra, vilket inte skapas vid kompilering.
 
-	/*if (this != &rhs)
-	{
+	//if (this != &rhs)
+	//{
 		this->xPos = rhs.xPos;
 		this->yPos = rhs.yPos;
 		this->startValue = rhs.startValue;
 		this->colourR = rhs.colourR;
 		this->colourG = rhs.colourG;
 		this->colourB = rhs.colourB;
-	}*/
+//	}
 }
 
 Block & Block::operator=(const Block &rhs)
@@ -51,7 +51,7 @@ bool Block::operator==(const Block &rhs) const
 bool Block::operator!=(const Block &rhs) const
 {
 	//Returns TRUE if the statement is false.
-	bool notEqual = false;
+	/*bool notEqual = false;
 	if (this->xPos != rhs.xPos ||
 		this->yPos != rhs.yPos ||
 		this->startValue != rhs.startValue ||
@@ -59,7 +59,14 @@ bool Block::operator!=(const Block &rhs) const
 		this->colourG != rhs.colourG ||
 		this->colourB != rhs.colourB)
 		notEqual = true;
-	return notEqual;
+	return notEqual;*/
+
+	bool isTrue = false;
+
+	if (this->startValue != rhs.startValue)
+		isTrue = true;
+
+	return isTrue;
 }
 
 std::uint16_t Block::GetXPosition() const
