@@ -15,7 +15,7 @@ BlockBasedGame::BlockBasedGame(std::uint8_t puzzleSize, std::uint16_t gridSize)
 			if (i == puzzleSize - 1 && j == puzzleSize - 1)
 				gameGrid[i][j] = ptr;
 			else
-				gameGrid[i][j] = new Block(i, j, 0, 0, 0, 0);
+				gameGrid[i][j] = new Block(i, j, 1, 0, 0, 0);
 		}
 	}
 }
@@ -105,73 +105,178 @@ std::uint16_t BlockBasedGame::CurrentScore()
 
 void BlockBasedGame::SetBoardState(const std::vector<Block*>& state)
 {
+	std::cout << "***********************SetboardState running*************" << std::endl;
+	std::cout << "State Size:" << state.size() << std::endl;
+
+	uint16_t indexX;
+	uint16_t indexY;
 	uint16_t xAxle;
 	uint16_t yAxle;
 	size_t gridSize = 0; //Håller storleken på hela brädet
-	for (int i = 0; i < gameGrid.size(); i++)
-	{
-		gridSize += gameGrid[i].size();
-	}
+	gridSize = gameGrid.size() * gameGrid.size();
 	size_t sideSize = gameGrid.size(); //Håller storleken på en sida
-	std::cout << "Original sizes: " << std::endl << std::endl;
-	std::cout << "Side size: " << sideSize << std::endl;
-	std::cout << "Grid size: " << gridSize << std::endl;
-	std::cout << "------------------------------------" << std::endl;
 
 	if (state.size() >= gridSize) //Jämförelse med hela brädet då A använder sig av 1d vector
 	{
-		//size_t diff = state.size() - gridSize;
-		//std::cout << "DIFF: " << diff << std::endl;
+
 		gameGrid.resize(sideSize); //fixa antal kolumner
 		for (int i = 0; i < sideSize; i++)
 		{
 			gameGrid[i].resize(sideSize); //fixar antal rader
 		}
-		std::cout << "Updated sizes: " << std::endl << std::endl;
-		std::cout << "Side size (x-axle): " << gameGrid.size() << std::endl;
-		std::cout << "Vector 1 size(y-axle): " << gameGrid[0].size() << std::endl;
-		std::cout << "Vector 2 size(y-axle): " << gameGrid[1].size() << std::endl;
-		std::cout << "Vector 3 size(y-axle): " << gameGrid[2].size() << std::endl;
-		std::cout << "------------------------------------" << gridSize << std::endl;
-
-		for (int i = 0; i < state.size() -1; i++)
+		//Printa gameGrid innan delete
+		std::cout << " Printa gameGrid innan delete " << std::endl;
+		for (int i = 0; i < gameGrid.size(); i++)
 		{
-			std::cout << i << " : " << state[i]->GetXPosition() << ", " << state[i]->GetYPosition() << std::endl;
+			for (int j = 0; j < gameGrid[i].size(); j++)
+			{
+				if (gameGrid[i][j] != nullptr)
+					std::cout << "gameGrid[" << i << "][" << j <<"] : " << gameGrid[i][j]->GetValue() << std::endl;
+				else
+					std::cout << "gameGrid[" << i << "][" << j << "] : null" << std::endl;
+			}
 		}
-		for (int i = 0; i < gridSize; i++)
+		//lets delete
+		for (int i = 0; i < gameGrid.size(); i++)
+		{
+			for (int j = 0; j < gameGrid[i].size(); j++)
+			{
+				if (gameGrid[i][j] != nullptr)
+				{
+					delete gameGrid[i][j];
+					gameGrid[i][j]->SetValue(1);
+				}
+				else
+					std::cout << "Found null" << std::endl;
+			}
+		}
+	/*	std::cout << "gameGrid size after delete" << gameGrid.size() << std::endl;
+		std::cout << "gameGrid 0 size after delete: " << gameGrid[0].size() << std::endl;
+		std::cout << "gameGrid 1 size after delete: " << gameGrid[0].size() << std::endl;
+		std::cout << "gameGrid 2 size after delete: " << gameGrid[0].size() << std::endl;*/
+
+
+		//printa gamegrid efter delete
+		std::cout << " Printa gameGrid efter delete " << std::endl;
+	//m	std::cout << gameGrid[0][0] << std::endl;
+	/*	for (int i = 0; i < gameGrid.size(); i++)
+		{
+			for (int j = 0; j < gameGrid[i].size(); j++)
+			{
+				if (gameGrid[i][j] != nullptr)
+					std::cout << "gameGrid[" << i << "][" << j << "] : " << gameGrid[i][j]->GetValue() << std::endl;
+				else
+					std::cout << "gameGrid[" << i << "][" << j << "] : null" << std::endl;
+			}
+		}*/
+
+		///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+		//Holding the coordinates
+		for (int i = 0; i < state.size(); i++)
 		{
 			//Holding the coordinates
 			if (state[i] != nullptr)
 			{
-				xAxle = state[i]->GetXPosition();
-				yAxle = state[i]->GetYPosition();
+				indexX = state[i]->GetXPosition();
+				indexY = state[i]->GetYPosition();
 
 				//Fixing some wierd issues where coordinates in the form of 0,100
-				if (yAxle != 0)
-					yAxle = yAxle / 100;
-				if (xAxle != 0)
-					xAxle = xAxle / 100;
+				if (indexY != 0)
+					indexY = indexY / 100;
+				if (indexX != 0)
+					indexX = indexX / 100;
 
-				std::cout << "xAxle: " << xAxle << std::endl;
-				std::cout << "yAxle: " << yAxle << std::endl;
-			}
-			
-
-			if (state[i] != nullptr)
-			{
-				this->gameGrid[xAxle][yAxle]->SetValue(state[i]->GetValue());
-				this->gameGrid[xAxle][yAxle]->SetXPosition(state[i]->GetXPosition());
-				this->gameGrid[xAxle][yAxle]->SetYPosition(state[i]->GetYPosition());
-				this->gameGrid[xAxle][yAxle]->SetColourR(state[i]->GetColourR());
-				this->gameGrid[xAxle][yAxle]->SetColourG(state[i]->GetColourG());
-				this->gameGrid[xAxle][yAxle]->SetColourB(state[i]->GetColourB());
+				this->gameGrid[indexX][indexY] = new Block(state[i]->GetXPosition(), state[i]->GetYPosition(), state[i]->GetValue(), state[i]->GetColourR(), state[i]->GetColourG(), state[i]->GetColourB());
 			}
 			else //TODO: HITTA DEN SISTA KORDINATEN
 			{
-				this->gameGrid[xAxle][yAxle] = nullptr;
+				this->gameGrid[indexX + 1][indexY] = nullptr;
 			}
 		}
+
+		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+		//printa gamegrid efter new
+		std::cout << " Printa gameGrid efter new " << std::endl;
+		for (int i = 0; i < gameGrid.size(); i++)
+		{
+			for (int j = 0; j < gameGrid[i].size(); j++)
+			{
+				if (gameGrid[i][j] != nullptr)
+					std::cout << "gameGrid[" << i << "][" << j << "] : " << gameGrid[i][j]->GetValue() << std::endl;
+				else
+					std::cout << "gameGrid[" << i << "][" << j << "] : null" << std::endl;
+			}
+		}
+
+																							//std::cout << "Updated sizes: " << std::endl << std::endl;
+																							//std::cout << "Side size (x-axle): " << gameGrid.size() << std::endl;
+																							//std::cout << "Vector 1 size(y-axle): " << gameGrid[0].size() << std::endl;
+																							//std::cout << "Vector 2 size(y-axle): " << gameGrid[1].size() << std::endl;
+																							//std::cout << "Vector 3 size(y-axle): " << gameGrid[2].size() << std::endl;
+																							//std::cout << "------------------------------------" << std::endl;
+	//	for (int i = 0; i < gameGrid.size(); i++)
+	//		std::cout << "gameGrid after update:" << gameGrid[i].size() << std::endl;
+	//	std::cout << std::endl << std::endl << std::endl << std::endl;
+	//	std::cout << "Printing coordinates:" << std::endl;
+
+	//	for (int i = 0; i < state.size(); i++)
+	//	{
+	//		if (state[i] == nullptr)
+	//		{
+	//			std::cout << "state[x][y] has no coordinates"  << std::endl;
+	//		}
+	//		else
+	//		{
+	//			//std::cout << i << " : " << state[i]->GetXPosition() << ", " << state[i]->GetYPosition() << std::endl;
+	//			std::cout << "state[" << state[i]->GetXPosition() << "][" << state[i]->GetYPosition()  << "]"<< std::endl;
+
+	//		}
+	//	}
+	//	for (int i = 0; i < state.size(); i++)
+	//	{
+	//		//Holding the coordinates
+	//		if (state[i] != nullptr)
+	//		{
+	//			xAxle = state[i]->GetXPosition();
+	//			yAxle = state[i]->GetYPosition();
+
+	//			//Fixing some wierd issues where coordinates in the form of 0,100
+	//			if (yAxle != 0)
+	//				yAxle = yAxle / 100;
+	//			if (xAxle != 0)
+	//				xAxle = xAxle / 100;
+
+	//			/*std::cout << "xAxle: " << xAxle << std::endl;
+	//			std::cout << "yAxle: " << yAxle << std::endl;
+	//			std::cout << "--------------" << std::endl << std::endl << std::endl;*/
+
+	//			this->gameGrid[xAxle][yAxle]->SetValue(state[i]->GetValue());
+	//			this->gameGrid[xAxle][yAxle]->SetXPosition(xAxle);
+	//			this->gameGrid[xAxle][yAxle]->SetYPosition(yAxle);
+	//			this->gameGrid[xAxle][yAxle]->SetColourR(state[i]->GetColourR());
+	//			this->gameGrid[xAxle][yAxle]->SetColourG(state[i]->GetColourG());
+	//			this->gameGrid[xAxle][yAxle]->SetColourB(state[i]->GetColourB());
+
+
+
+	//		}
+	//		else //TODO: HITTA DEN SISTA KORDINATEN
+	//		{
+	///*			xAxle = state[i]->GetXPosition();
+	//			yAxle = state[i]->GetYPosition();*/
+	//			//Fixing some wierd issues where coordinates in the form of 0,100
+	///*			if (yAxle != 0)
+	//				yAxle = yAxle / 100;
+	//			if (xAxle != 0)
+	//				xAxle = xAxle / 100;*/
+	//			this->gameGrid[xAxle +1][yAxle] = nullptr;
+	//		}
+	//	}
 	}
+	else
+	std::cout << "Did not pass size comparison." << std::endl;
 }
 
 void BlockBasedGame::MoveUp()

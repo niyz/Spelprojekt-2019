@@ -181,7 +181,52 @@ bool NPuzzleGameUnitTesting()
                 originalBlocks.push_back(new Block(*game[8]));
             else
                 originalBlocks.push_back(nullptr);
-            game.SetBoardState(blocks);
+
+			////////////////////////////////////Testar att sätta in bs värden i originalBlocks för att se om jag påverkar den
+			//från min funktion
+		/*	for (int i = 0; i < originalBlocks.size(); i++)
+			{
+				originalBlocks[i] = new Block(1, 1, 1, 1, 1, 1);
+			}*/
+			std::cout << "BEGIN" << std::endl;
+			std::cout << std::endl << std::endl;
+			std::cout << "Blocks in its original form" << std::endl;
+			for (int i = 0; i < blocks.size(); i++)
+			{
+				if (blocks[i] != nullptr)
+					std::cout << i << ":" << blocks[i]->GetValue() << std::endl;
+				else
+					std::cout << "nullptr" << std::endl;
+			}
+			std::cout << "OriginalBlocks in its original form" << std::endl;
+			for (int i = 0; i < originalBlocks.size(); i++)
+			{
+				if (originalBlocks[i] != nullptr)
+					std::cout << i << ":" << originalBlocks[i]->GetValue() << std::endl;
+				else
+					std::cout << "nullptr" << std::endl;
+			}
+			std::cout << "Running SetBoardState: 1st time" << std::endl;
+            game.SetBoardState(blocks);/*---------------------------------------------------------First*/
+			std::cout << "Ending SetBoardState: 1st time" << std::endl;
+			std::cout << std::endl << std::endl;
+			std::cout << "Blocks in its 2nd form" << std::endl;
+			for (int i = 0; i < blocks.size(); i++)
+			{
+				if (blocks[i] != nullptr)
+					std::cout << i << ":" << blocks[i]->GetValue() << std::endl;
+				else
+					std::cout << "nullptr" << std::endl;
+			}
+			std::cout << "OriginalBlocks in its 2nd form" << std::endl;
+			for (int i = 0; i < originalBlocks.size(); i++)
+			{
+				if (originalBlocks[i] != nullptr)
+					std::cout << i << ":" << originalBlocks[i]->GetValue() << std::endl;
+				else
+					std::cout << "nullptr" << std::endl;
+			}
+			std::cout << "Andreas doing stuff with loops" << std::endl;
             for(std::uint8_t i = 0; i != 9; ++i)
             {
                 if(!game[i] && !originalBlocks[i])
@@ -204,7 +249,66 @@ bool NPuzzleGameUnitTesting()
                 }
             }
             blocks.push_back(nullptr);
+			std::cout << "Andreas stopped doing stuff with loops" << std::endl;
+			std::cout << std::endl << std::endl;
+			std::cout << "Blocks in its form after LOOPS" << std::endl;
+			for (int i = 0; i < blocks.size(); i++)
+			{
+				if (blocks[i] != nullptr)
+					std::cout << i << ":" << blocks[i]->GetValue() << std::endl;
+				else
+					std::cout << "nullptr" << std::endl;
+			}
+			std::cout << "OriginalBlocks in its form after LOOPS" << std::endl;
+			for (int i = 0; i < originalBlocks.size(); i++)
+			{
+				if (originalBlocks[i] != nullptr)
+					std::cout << i << ":" << originalBlocks[i]->GetValue() << std::endl;
+				else
+					std::cout << "nullptr" << std::endl;
+			}
+			/*Second*/
+			std::cout << "Running SetBoardState: 2nd time" << std::endl;
             game.SetBoardState(blocks);
+			std::cout << "Ending SetBoardState: 2nd time" << std::endl;
+			std::cout << std::endl << std::endl;
+			std::cout << "Blocks in its 3rd form" << std::endl;
+			for (int i = 0; i < blocks.size(); i++)
+			{
+				if (blocks[i] != nullptr)
+					std::cout << i << ":" << blocks[i]->GetValue() << std::endl;
+				else
+					std::cout << "nullptr" << std::endl;
+			}
+			std::cout << "OriginalBlocks in its 3rd form" << std::endl;
+			for (int i = 0; i < originalBlocks.size(); i++)
+			{
+				if (originalBlocks[i] != nullptr)
+					std::cout << i << ":" << originalBlocks[i]->GetValue() << std::endl;
+				else
+					std::cout << "nullptr" << std::endl;
+			}
+			std::cout << "Running SetBoardState: 3rd time" << std::endl;
+			game.SetBoardState(blocks);
+			std::cout << "Ending SetBoardState: 3rd time" << std::endl;
+			std::cout << std::endl << std::endl;
+			std::cout << "Blocks in its 3rd form" << std::endl;
+			for (int i = 0; i < blocks.size(); i++)
+			{
+				if (blocks[i] != nullptr)
+					std::cout << i << ":" << blocks[i]->GetValue() << std::endl;
+				else
+					std::cout << "nullptr" << std::endl;
+			}
+			std::cout << "OriginalBlocks in its 3rd form" << std::endl;
+			for (int i = 0; i < originalBlocks.size(); i++)
+			{
+				if (originalBlocks[i] != nullptr)
+					std::cout << i << ":" << originalBlocks[i]->GetValue() << std::endl;
+				else
+					std::cout << "nullptr" << std::endl;
+			}
+
             for(std::uint8_t i = 0; i != 9; ++i)
             {
                 if(!game[i] && !blocks[i])
