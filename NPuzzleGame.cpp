@@ -3,35 +3,22 @@
 NPuzzleGame::NPuzzleGame(std::uint8_t puzzleSize, std::uint16_t gridSize)
 	:BlockBasedGame(puzzleSize, gridSize)
 {
-	int index = 1;
+	int startVal = 1;
+	int counter = 0;
 	for (int x = 0; x < puzzleSize; x++)
 	{ 
 		for (int y = 0; y < puzzleSize; y++)
 		{
-
-			if (gameGrid[x][y] != nullptr)
+			if (counter == puzzleSize * puzzleSize - 1)
 			{
-				this->gameGrid[x][y]->SetYPosition(y);//Sätter y då den betar av y kön först
-				this->gameGrid[x][y]->SetXPosition(x);
-				this->gameGrid[x][y]->SetValue(index++);
-			}
-		}
-	}
-	/*for (int i = 0; i < gameGrid.size(); i++)
-	{
-		for (int j = 0; j < gameGrid[i].size(); j++)
-		{
-			if (gameGrid[i][j] == nullptr)
-			{
-				std::cout << "nullptr";
+				this->gameGrid[x][y] = nullptr;
 			}
 			else
-			{
-				std::cout << gameGrid[i][j]->GetValue();
-			}
+				this->gameGrid[x][y] = new Block(x, y, startVal++, 255, 255, 255);
+			counter++;
+
 		}
-		std::cout << std::endl;
-	}*/
+	}
 }
 
 NPuzzleGame::~NPuzzleGame()

@@ -12,6 +12,7 @@ class Block
 		//tjena
 	public:
 		Block(std::uint16_t xPos, std::uint16_t yPos, std::uint16_t startValue, std::uint8_t colourR, std::uint8_t colourG, std::uint8_t colourB);
+		~Block();
 			//Skall fungera som default konstruktor med rimliga startvärden.
 		Block(const Block&rhs);
 			//Copy-konstruktor, borde inte behövas skapas då vi inte har pekare..
