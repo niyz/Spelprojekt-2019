@@ -178,18 +178,12 @@ namespace UnitTests::N_PUZZLE_GAME
 				std::vector<Block*> originalBlocks;
 				for (std::uint8_t i = 0; i != 8; ++i)
 				{
-					ans = (i % 3) * 100; 
-					an1 = (i / 3) * 100;
-					std::cout << unsigned(i) << " % " << "3"  << "* 100"<< " = " << unsigned(ans) << std::endl;
-					std::cout << unsigned(i) << " / " << "3" << "* 100" << " = " << unsigned(an1) << std::endl;
+				
 
 					blocks.push_back(new Block((i % 3) * 100, (i / 3) * 100, i + 1, 0, 0, 0));
-					std::cout << "game[" << unsigned(i) << "] = " << game[i] << std::endl;
 					if (game[i])
-					{
-						std::cout << "Function called correctly" << std::endl;
 						originalBlocks.push_back(new Block(*game[i]));
-					}
+
 						
 					else
 						originalBlocks.push_back(nullptr);
@@ -228,16 +222,6 @@ namespace UnitTests::N_PUZZLE_GAME
 				game.SetBoardState(blocks);
 				for (std::uint8_t i = 0; i != 9; ++i)
 				{
-				//	for (std::uint8_t u = 0; u != 9; u++)
-				//	{
-				//		if (game[unsigned(u)] != nullptr)
-				//			std::cout << "game[" << unsigned(u) << "] : " << game[unsigned(u)]->GetValue() << std::endl;
-				///*		if (blocks[unsigned(u)] != nullptr)
-				//			std::cout << "blocks[" << unsigned(u) << "] : " << blocks[unsigned(u)]->GetValue(); << std::endl;*/
-				//	}
-					
-
-					//printish?
 					if (!game[i] && !blocks[i])
 						continue;
 					if ((!game[i] && blocks[i]) || (game[i] && !blocks[i]))

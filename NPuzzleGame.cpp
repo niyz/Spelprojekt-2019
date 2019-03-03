@@ -16,7 +16,6 @@ NPuzzleGame::NPuzzleGame(std::uint8_t puzzleSize, std::uint16_t gridSize)
 			else
 				this->gameGrid[x][y] = new Block(x*100, y*100, startVal++, 0, 0, 0);
 			counter++;
-
 		}
 	}
 }
@@ -97,47 +96,63 @@ void NPuzzleGame::MoveRight()
 
 int NPuzzleGame::GameStatus() const
 {
-	//Utkommenterat sedan ändringen av nullvärde -> nullptr
+	std::vector<Block*> tempGrid2;
+	int retVal = 0;
+	int trueGrid = 0;
+	int counter3 = 0;
+	int totalSize = gameGrid.size();
+	totalSize = totalSize * totalSize;
+	tempGrid2.resize(totalSize);
+	int lastPiece = totalSize - 1;
 
-	//std::vector<int> trueGrid;
-	//int aValue = 0, sideSize = GetPuzzleSize();
-	//int gridSize = sideSize * sideSize;
-	//trueGrid.resize(gridSize);
-	//int walkChecker = 0;
-	//int winOrLose = 0;
-	//for (int i = 0; i < sideSize; i++)
-	//{
-	//	for (int j = 0; j < sideSize; j++)
-	//	{
-	//		aValue = gameGrid[j][i]->GetValue();
-	//		trueGrid.push_back(aValue);
-	//	}
-	//}
+	//Fixar 1d loop tillfälligt
+	for (size_t j = 0; j < gameGrid.size(); j++)
+	{
+		for (size_t i = 0; i < gameGrid.size(); i++)
+		{
+			if (gameGrid[i][j] != nullptr)
+			{
+				tempGrid2[counter3] = gameGrid[i][j];
+			}
+			else
+				tempGrid2[counter3] == nullptr;
+			counter3++;
+		}
+	}
 
-	////Comparison loop
-	////Om walkChecker har samma värde som gridSize har man vunnit
-	//for (int x = 0; x < gridSize; x++)
-	//{
-	//	std::cout << trueGrid[x];
-	//	if (trueGrid[x] == x)
-	//	{
-	//		walkChecker++;
-	//	}
-	//}
-	////Hur skiljer jag på om spelet är pågående eller om man har förlorat?
-	//if (walkChecker == gridSize)
-	//{
-	//	winOrLose = 1;
-	//}
-	//else
-	//{	
-	//	winOrLose = 0;
-	//}
+	for (int x = 0; x < tempGrid2.size(); x++)
+	{
+		if (tempGrid2[x] != nullptr)
+		{
+			if (tempGrid2[x]->GetValue() == x + 1)
+			{
+				trueGrid++;
+			}
+		}
+		else if (tempGrid2[lastPiece] == nullptr)
+		{
+			trueGrid++;
+		}
+		else
+		{
+			std::cout << "Rutor på fel plats" << std::endl;
+		}
+			
 
-	//return winOrLose;
-	return 0;
+			
+	}
+
+	if (trueGrid == tempGrid2.size())
+	{
+		retVal = 1;
+	}
+
+	
+	return retVal;
 }
 
 void NPuzzleGame::UpdateScore()
 {
 }
+
+

@@ -39,17 +39,6 @@ const Block * BlockBasedGame::operator[](std::uint8_t index) const
 			counter2++;
 		}
 	}
-	//std::cout << "-------------" << std::endl;
-	//for (size_t i = 0; i < tempGrid.size(); i++)
-//	{
-	//	if (tempGrid[i] != nullptr)
-	//	{
-	//		std::cout << tempGrid[i]->GetValue() << std::endl;
-	//	}
-		//else
-//			std::cout << "null" << std::endl;
-	//}
-//	std::cout << "--------Print from operator[] Finished----------" << std::endl;
 
 	Block* valuePtr = nullptr;
 	if (tempGrid[index] != nullptr)
@@ -59,32 +48,6 @@ const Block * BlockBasedGame::operator[](std::uint8_t index) const
 	return valuePtr;
 
 
-	////index = 2
-	////index är indx, inte value
-	//int counter = 0;
-	//bool found = false;
-	//Block* indexValuePtr = nullptr;;
-	//for (int j = 0; j < this->puzzleSize && found == false; j++)
-	//{
-	//	for (int i = 0; i < this->puzzleSize && found == false; i++)
-	//	{
-	//		if (gameGrid[i][j] != nullptr)
-	//		{
-	//			if (counter == index && gameGrid[i][j] != nullptr)
-	//			{
-	//				indexValuePtr = gameGrid[i][j];
-	//				found = true;
-	//			}
-	//			else
-	//				indexValuePtr = nullptr;
-	//		}
-	//		else
-	//			indexValuePtr = nullptr;
-	//		counter++;
-	//	}
-	//}
-
-	//return indexValuePtr;
 }
 
 Block * BlockBasedGame::operator[](std::uint8_t index)
@@ -107,17 +70,6 @@ Block * BlockBasedGame::operator[](std::uint8_t index)
 			counter2++;
 		}
 	}
-	//std::cout << "-------------" << std::endl;
-	//for (size_t i = 0; i < tempGrid.size(); i++)
-//	{
-	//	if (tempGrid[i] != nullptr)
-	//	{
-	//		std::cout << tempGrid[i]->GetValue() << std::endl;
-	//	}
-		//else
-//			std::cout << "null" << std::endl;
-	//}
-//	std::cout << "--------Print from operator[] Finished----------" << std::endl;
 
 	Block* valuePtr = nullptr;
 	if (tempGrid[index] != nullptr)
@@ -127,32 +79,6 @@ Block * BlockBasedGame::operator[](std::uint8_t index)
 	return valuePtr;
 
 
-	////index = 2
-	////index är indx, inte value
-	//int counter = 0;
-	//bool found = false;
-	//Block* indexValuePtr = nullptr;;
-	//for (int j = 0; j < this->puzzleSize && found == false; j++)
-	//{
-	//	for (int i = 0; i < this->puzzleSize && found == false; i++)
-	//	{
-	//		if (gameGrid[i][j] != nullptr)
-	//		{
-	//			if (counter == index && gameGrid[i][j] != nullptr)
-	//			{
-	//				indexValuePtr = gameGrid[i][j];
-	//				found = true;
-	//			}
-	//			else
-	//				indexValuePtr = nullptr;
-	//		}
-	//		else
-	//			indexValuePtr = nullptr;
-	//		counter++;
-	//	}
-	//}
-
-	//return indexValuePtr;
 }
 
 BlockBasedGame::~BlockBasedGame()
@@ -216,8 +142,8 @@ void BlockBasedGame::SetBoardState(const std::vector<Block*>& state)
 		uint16_t yAxle;
 		size_t gridSize = 0; //Håller storleken på hela brädet
 		size_t sideSize = gameGrid.size(); //Håller storleken på en sida
-	
-	
+
+
 
 
 		//Delete current grid
@@ -230,8 +156,6 @@ void BlockBasedGame::SetBoardState(const std::vector<Block*>& state)
 					delete gameGrid[i][j];
 					gameGrid[i][j] = nullptr;
 				}
-				else
-					std::cout << "Found null" << std::endl;
 			}
 		}
 
@@ -249,26 +173,10 @@ void BlockBasedGame::SetBoardState(const std::vector<Block*>& state)
 					indexY = indexY / 100;
 				if (indexX != 0)
 					indexX = indexX / 100;
-				//i ett tillfälle har state-vectorn ett BS värde på 8e platsen.. den påverkar jag väll inte ens?
 				this->gameGrid[indexX][indexY] = new Block(state[i]->GetXPosition(), state[i]->GetYPosition(), state[i]->GetValue(), state[i]->GetColourR(), state[i]->GetColourG(), state[i]->GetColourB());
 			}
 		}
-
-		//printa gamegrid efter new
-		std::cout << " Printa gameGrid efter new " << std::endl;
-		for (int i = 0; i < gameGrid.size(); i++)
-		{
-			for (int j = 0; j < gameGrid[i].size(); j++)
-			{
-				if (gameGrid[i][j] != nullptr)
-					std::cout << "gameGrid[" << i << "][" << j << "] : " << gameGrid[i][j]->GetValue() << std::endl;
-				else
-					std::cout << "gameGrid[" << i << "][" << j << "] : null" << std::endl;
-			}
-		}
-		std::cout << "GameGrid updated!!!!" << std::endl;
 	}
-	
 }
 
 void BlockBasedGame::MoveUp()
