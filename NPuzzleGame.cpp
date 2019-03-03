@@ -5,16 +5,16 @@ NPuzzleGame::NPuzzleGame(std::uint8_t puzzleSize, std::uint16_t gridSize)
 {
 	int startVal = 1;
 	int counter = 0;
-	for (int x = 0; x < puzzleSize; x++)
+	for (int y = 0; y < puzzleSize; y++)
 	{ 
-		for (int y = 0; y < puzzleSize; y++)
+		for (int x = 0; x < puzzleSize; x++)
 		{
 			if (counter == puzzleSize * puzzleSize - 1)
 			{
 				this->gameGrid[x][y] = nullptr;
 			}
 			else
-				this->gameGrid[x][y] = new Block(x, y, startVal++, 255, 255, 255);
+				this->gameGrid[x][y] = new Block(x*100, y*100, startVal++, 0, 0, 0);
 			counter++;
 
 		}

@@ -141,10 +141,14 @@ namespace UnitTests::N_PUZZLE_GAME
 			try {
 				for (std::uint16_t iteration = 0; testPassed && iteration != 10000; ++iteration)
 				{
+					//std::cout << unsigned(iteration) << std::endl;
 					T game(3, 100);
 					std::uint64_t inversions = 0;
 					for (std::uint8_t index = 0; index != 9; ++index)
 					{
+						/*///
+						std::cout << unsigned(index) << std::endl;
+						///*/
 						if (!game[index])
 							continue;
 						std::uint16_t indexValue = game[index]->GetValue();
@@ -167,13 +171,26 @@ namespace UnitTests::N_PUZZLE_GAME
 
 				testPassed = true;
 				T game(3, 100);
+				std::uint8_t ans = 0;
+				std::uint8_t an1 = 0;
+
 				std::vector<Block*> blocks;
 				std::vector<Block*> originalBlocks;
 				for (std::uint8_t i = 0; i != 8; ++i)
 				{
+					ans = (i % 3) * 100; 
+					an1 = (i / 3) * 100;
+					std::cout << unsigned(i) << " % " << "3"  << "* 100"<< " = " << unsigned(ans) << std::endl;
+					std::cout << unsigned(i) << " / " << "3" << "* 100" << " = " << unsigned(an1) << std::endl;
+
 					blocks.push_back(new Block((i % 3) * 100, (i / 3) * 100, i + 1, 0, 0, 0));
+					std::cout << "game[" << unsigned(i) << "] = " << game[i] << std::endl;
 					if (game[i])
+					{
+						std::cout << "Function called correctly" << std::endl;
 						originalBlocks.push_back(new Block(*game[i]));
+					}
+						
 					else
 						originalBlocks.push_back(nullptr);
 				}
@@ -194,6 +211,10 @@ namespace UnitTests::N_PUZZLE_GAME
 						game.SetBoardState(originalBlocks);
 						break;
 					}
+					///
+					
+					///
+
 					if (*game[i] != *originalBlocks[i])
 					{
 						std::cout << "\tError: SetBoardState changed when called with vector smaller than expected." << std::endl;
@@ -207,11 +228,13 @@ namespace UnitTests::N_PUZZLE_GAME
 				game.SetBoardState(blocks);
 				for (std::uint8_t i = 0; i != 9; ++i)
 				{
-					for (std::uint8_t u = 0; u != 9; u++)
-					{
-						std::cout << "game[" << unsigned(u) << "] : " << game[u] << std::endl;
-						std::cout << "blocks[" << unsigned(u) << "] : " << blocks[u] << std::endl;
-					}
+				//	for (std::uint8_t u = 0; u != 9; u++)
+				//	{
+				//		if (game[unsigned(u)] != nullptr)
+				//			std::cout << "game[" << unsigned(u) << "] : " << game[unsigned(u)]->GetValue() << std::endl;
+				///*		if (blocks[unsigned(u)] != nullptr)
+				//			std::cout << "blocks[" << unsigned(u) << "] : " << blocks[unsigned(u)]->GetValue(); << std::endl;*/
+				//	}
 					
 
 					//printish?

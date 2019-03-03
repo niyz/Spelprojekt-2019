@@ -3,70 +3,156 @@
 BlockBasedGame::BlockBasedGame(std::uint8_t puzzleSize, std::uint16_t gridSize)
 {
 	//Initiera medlemsvariabler med de argument som skickas med konstruktorn.
-	this->puzzleSize = puzzleSize; //pu
+	//this->puzzleSize = puzzleSize; //pu
+	this->puzzleSize = puzzleSize;
 	this->gridSize = gridSize;
 	gameGrid.resize(puzzleSize);
-	Block * ptr = nullptr;
 	for (int i = 0; i < puzzleSize; i++) //Tillfällig 2 så vi får en 2x2 vector
 	{
 		gameGrid[i].resize(puzzleSize);
 		for (int j = 0; j < puzzleSize; j++)
 		{
 			gameGrid[i][j] = nullptr;
-			/*if (i == puzzleSize - 1 && j == puzzleSize - 1)
-				gameGrid[i][j] = ptr;
-			else
-				gameGrid[i][j] = new Block(i, j, 1, 0, 0, 0);*/
 		}
 	}
+
 }
 
 
 const Block * BlockBasedGame::operator[](std::uint8_t index) const
 {
-	//No idea
-	Block* indexValuePtr = nullptr;;
-	for (int i = 0; i < this->puzzleSize; i++)
+
+	//Gör tillfälligt om till 1d för detta går fan inte
+	//std::cout << "--------Print from operator[]----------" << std::endl;
+	size_t sizeOfSide = this->gameGrid.size();
+	std::vector<Block*> tempGrid;
+	tempGrid.resize(sizeOfSide * sizeOfSide);
+	int counter2 = 0;
+	for (size_t j = 0; j < gameGrid.size(); j++)
 	{
-		for (int j = 0; j < this->puzzleSize; j++)
+		for (size_t i = 0; i < gameGrid.size(); i++)
 		{
-			if (gameGrid[i][j]->GetValue() == index)
+			if (gameGrid[i][j] != nullptr)
 			{
-				indexValuePtr = gameGrid[i][j];
+				tempGrid[counter2] = gameGrid[i][j];
 			}
+			counter2++;
 		}
 	}
-	return indexValuePtr;
+	//std::cout << "-------------" << std::endl;
+	//for (size_t i = 0; i < tempGrid.size(); i++)
+//	{
+	//	if (tempGrid[i] != nullptr)
+	//	{
+	//		std::cout << tempGrid[i]->GetValue() << std::endl;
+	//	}
+		//else
+//			std::cout << "null" << std::endl;
+	//}
+//	std::cout << "--------Print from operator[] Finished----------" << std::endl;
+
+	Block* valuePtr = nullptr;
+	if (tempGrid[index] != nullptr)
+	{
+		valuePtr = tempGrid[index];
+	}
+	return valuePtr;
+
+
+	////index = 2
+	////index är indx, inte value
+	//int counter = 0;
+	//bool found = false;
+	//Block* indexValuePtr = nullptr;;
+	//for (int j = 0; j < this->puzzleSize && found == false; j++)
+	//{
+	//	for (int i = 0; i < this->puzzleSize && found == false; i++)
+	//	{
+	//		if (gameGrid[i][j] != nullptr)
+	//		{
+	//			if (counter == index && gameGrid[i][j] != nullptr)
+	//			{
+	//				indexValuePtr = gameGrid[i][j];
+	//				found = true;
+	//			}
+	//			else
+	//				indexValuePtr = nullptr;
+	//		}
+	//		else
+	//			indexValuePtr = nullptr;
+	//		counter++;
+	//	}
+	//}
+
+	//return indexValuePtr;
 }
 
 Block * BlockBasedGame::operator[](std::uint8_t index)
 {
-	//index = 2
-	//index är indx, inte value
-	int counter = 0;
-	bool found = false;
-	Block* indexValuePtr = nullptr;;
-	for (int j = 0; j < this->puzzleSize && found == false; j++)
+
+	//Gör tillfälligt om till 1d för detta går fan inte
+	//std::cout << "--------Print from operator[]----------" << std::endl;
+	size_t sizeOfSide = this->gameGrid.size();
+	std::vector<Block*> tempGrid;
+	tempGrid.resize(sizeOfSide * sizeOfSide);
+	int counter2 = 0;
+	for (size_t j = 0; j < gameGrid.size(); j++)
 	{
-		for (int i = 0; i < this->puzzleSize && found == false; i++)
+		for (size_t i = 0; i < gameGrid.size(); i++)
 		{
 			if (gameGrid[i][j] != nullptr)
 			{
-				if (counter == index && gameGrid[i][j] != nullptr)
-				{
-					indexValuePtr = gameGrid[i][j];
-					found = true;
-				}
-				else
-					indexValuePtr = nullptr;
+				tempGrid[counter2] = gameGrid[i][j];
 			}
-			else
-				indexValuePtr = nullptr;
-			counter++;
+			counter2++;
 		}
 	}
+	//std::cout << "-------------" << std::endl;
+	//for (size_t i = 0; i < tempGrid.size(); i++)
+//	{
+	//	if (tempGrid[i] != nullptr)
+	//	{
+	//		std::cout << tempGrid[i]->GetValue() << std::endl;
+	//	}
+		//else
+//			std::cout << "null" << std::endl;
+	//}
+//	std::cout << "--------Print from operator[] Finished----------" << std::endl;
 
-	return indexValuePtr;
+	Block* valuePtr = nullptr;
+	if (tempGrid[index] != nullptr)
+	{
+		valuePtr = tempGrid[index];
+	}
+	return valuePtr;
+
+
+	////index = 2
+	////index är indx, inte value
+	//int counter = 0;
+	//bool found = false;
+	//Block* indexValuePtr = nullptr;;
+	//for (int j = 0; j < this->puzzleSize && found == false; j++)
+	//{
+	//	for (int i = 0; i < this->puzzleSize && found == false; i++)
+	//	{
+	//		if (gameGrid[i][j] != nullptr)
+	//		{
+	//			if (counter == index && gameGrid[i][j] != nullptr)
+	//			{
+	//				indexValuePtr = gameGrid[i][j];
+	//				found = true;
+	//			}
+	//			else
+	//				indexValuePtr = nullptr;
+	//		}
+	//		else
+	//			indexValuePtr = nullptr;
+	//		counter++;
+	//	}
+	//}
+
+	//return indexValuePtr;
 }
 
 BlockBasedGame::~BlockBasedGame()
@@ -116,26 +202,23 @@ std::uint16_t BlockBasedGame::CurrentScore()
 
 void BlockBasedGame::SetBoardState(const std::vector<Block*>& state)
 {
-	std::cout << "***********************SetboardState running*************" << std::endl;
+	//int boardSize = gameGrid.size() * gameGrid.size();
+	int totalPuzzleSize = this->puzzleSize*puzzleSize;
 
-	uint16_t indexX;
-	uint16_t indexY;
-	uint16_t xAxle;
-	uint16_t yAxle;
-	size_t gridSize = 0; //Håller storleken på hela brädet
-	gridSize = gameGrid.size() * gameGrid.size();
-	size_t sideSize = gameGrid.size(); //Håller storleken på en sida
-
-	int totalStateSize = state.size() + 1;
-	int newSideSize = sqrt(totalStateSize);
-	if (state.size() >= gridSize) //Jämförelse med hela brädet då A använder sig av 1d vector
+	//Det stora problemet just nu är  Error: SetBoardState changed when called with vector smaller than expected.
+	if (state.size() >= totalPuzzleSize) //Jämförelse med hela brädet då A använder sig av 1d vector
 	{
-		//14:26 uppdaterade så att den NYA sideSizen är från state.vectorn.
-		gameGrid.resize(newSideSize); //fixa antal kolumner // 
-		for (int i = 0; i < newSideSize; i++)
-		{
-			gameGrid[i].resize(newSideSize); //fixar antal rader
-		}
+		std::cout << "***********************SetboardState running*************" << std::endl;
+
+		uint16_t indexX;
+		uint16_t indexY;
+		uint16_t xAxle;
+		uint16_t yAxle;
+		size_t gridSize = 0; //Håller storleken på hela brädet
+		size_t sideSize = gameGrid.size(); //Håller storleken på en sida
+	
+	
+
 
 		//Delete current grid
 		for (int i = 0; i < gameGrid.size(); i++)
@@ -171,8 +254,6 @@ void BlockBasedGame::SetBoardState(const std::vector<Block*>& state)
 			}
 		}
 
-		/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 		//printa gamegrid efter new
 		std::cout << " Printa gameGrid efter new " << std::endl;
 		for (int i = 0; i < gameGrid.size(); i++)
@@ -187,8 +268,7 @@ void BlockBasedGame::SetBoardState(const std::vector<Block*>& state)
 		}
 		std::cout << "GameGrid updated!!!!" << std::endl;
 	}
-	else
-		std::cout << "Did not pass size comparison." << std::endl;
+	
 }
 
 void BlockBasedGame::MoveUp()
