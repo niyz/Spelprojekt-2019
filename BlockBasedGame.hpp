@@ -5,15 +5,17 @@
 #include <string>
 #include <vector>
 #include <iostream>
-
+#include <fstream>
 class BlockBasedGame //ABSTRAKT KLASS
 {
 private:
 	std::uint8_t puzzleSize;
 	std::uint16_t gridSize;
-	std::uint16_t goalScore;
+	//std::uint16_t goalScore;
 
 protected:
+	int highScores[5];
+	int nrOfMoves;
 	std::vector<std::vector<Block*>> gameGrid;
 
 public:

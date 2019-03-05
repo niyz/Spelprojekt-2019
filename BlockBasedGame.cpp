@@ -6,6 +6,11 @@ BlockBasedGame::BlockBasedGame(std::uint8_t puzzleSize, std::uint16_t gridSize)
 	//this->puzzleSize = puzzleSize; //pu
 	this->puzzleSize = puzzleSize;
 	this->gridSize = gridSize;
+	for (int i = 0; i < 5; i++)
+	{
+		this->highScores[i] = 0;
+	}
+	this->nrOfMoves = 0;
 	gameGrid.resize(puzzleSize);
 	for (int i = 0; i < puzzleSize; i++) //Tillfällig 2 så vi får en 2x2 vector
 	{
@@ -109,6 +114,15 @@ void BlockBasedGame::ReadHighscore(std::string filePath)
 
 void BlockBasedGame::SaveHighscore(std::string filePath)
 {
+	std::fstream highscoreFile("highscores.txt");
+	if (highscoreFile.is_open())
+	{
+		highscoreFile << "Writing this to file\n";
+	}
+	else
+		std::cout << "something fucked up" << std::endl;
+
+
 	//TODO
 }
 
@@ -121,9 +135,7 @@ std::uint16_t BlockBasedGame::Highscore(std::uint8_t index)
 
 std::uint16_t BlockBasedGame::CurrentScore()
 {
-	//TODO
-
-	return std::uint16_t();
+	return nrOfMoves;
 }
 
 void BlockBasedGame::SetBoardState(const std::vector<Block*>& state)
