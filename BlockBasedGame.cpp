@@ -114,6 +114,11 @@ void BlockBasedGame::ReadHighscore(std::string filePath)
 
 void BlockBasedGame::SaveHighscore(std::string filePath)
 {
+
+	//TODO
+
+	this->UpdateScore();
+
 	std::fstream highscoreFile("highscores.txt");
 	if (highscoreFile.is_open())
 	{
@@ -123,14 +128,13 @@ void BlockBasedGame::SaveHighscore(std::string filePath)
 		std::cout << "something fucked up" << std::endl;
 
 
-	//TODO
 }
 
 std::uint16_t BlockBasedGame::Highscore(std::uint8_t index)
 {
-	//TODO
+	this->UpdateScore();
 
-	return std::uint16_t();
+	return highScores[index];
 }
 
 std::uint16_t BlockBasedGame::CurrentScore()
@@ -146,7 +150,6 @@ void BlockBasedGame::SetBoardState(const std::vector<Block*>& state)
 	//Det stora problemet just nu är  Error: SetBoardState changed when called with vector smaller than expected.
 	if (state.size() >= totalPuzzleSize) //Jämförelse med hela brädet då A använder sig av 1d vector
 	{
-		std::cout << "***********************SetboardState running*************" << std::endl;
 
 		uint16_t indexX;
 		uint16_t indexY;
@@ -211,11 +214,10 @@ void BlockBasedGame::MoveRight()
 
 }
 
-int BlockBasedGame::GameStatus() const
-{
-
-	return 0;
-}
+//int BlockBasedGame::GameStatus() const
+//{
+//
+//}
 
 void BlockBasedGame::UpdateScore()
 {

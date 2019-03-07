@@ -111,7 +111,7 @@ int NPuzzleGame::GameStatus() const
 	int retVal = 0;
 	int trueGrid = 0;
 	int counter3 = 0;
-	int totalSize = gameGrid.size();
+	int totalSize = int(gameGrid.size());
 	totalSize = totalSize * totalSize;
 	tempGrid2.resize(totalSize);
 	int lastPiece = totalSize - 1;
@@ -126,7 +126,7 @@ int NPuzzleGame::GameStatus() const
 				tempGrid2[counter3] = gameGrid[i][j];
 			}
 			else
-				tempGrid2[counter3] == nullptr;
+				tempGrid2[counter3] = nullptr;
 			counter3++;
 		}
 	}
@@ -144,102 +144,68 @@ int NPuzzleGame::GameStatus() const
 		{
 			trueGrid++;
 		}
-		else
-		{
-			std::cout << "Rutor på fel plats" << std::endl;
-		}
-			
-
-			
+		
 	}
 
 	if (trueGrid == tempGrid2.size())
 	{
 		retVal = 1;
-	}
-
-	
+	}	
 	return retVal;
 }
 
 void NPuzzleGame::UpdateScore()
 {
-	//test var
-	//testvar
-	//For testing purpose
-	highScores[0] = 5;
-	highScores[1] = 2;
-	highScores[2] = 76;
-	highScores[3] = 5;
-	highScores[4] = 2354;
-
-
-	int temp;
-	int nah = 0;
-	
-	std::cout << "adding scores" << std::endl;
-	for (int i = 0; i < 5; i++)
+	int status = this->GameStatus();
+	if (status == 1)
 	{
-		std::cout << highScores[i] << std::endl;
-	}
-	//Sort
-	std::cout << "Sorting..." << std::endl;
-	for (int i = 0; i < 5; i++)
-	{
-		for (int j = 0; j < 5; j++)
+		bool updated = false;
+		int currentResult = this->CurrentScore();
+		int sizeOfList = 5;
+		int tempScores[5];
+		tempScores[0] = 0;
+		tempScores[1] = 0;
+		tempScores[2] = 0;
+		tempScores[3] = 0;
+		tempScores[4] = 0;
+
+		for (int i = 0; i < sizeOfList && updated == false; i++)
 		{
-			if (highScores[i] < highScores[j])
+			if (currentResult <= highScores[i])
 			{
-				temp = highScores[j];
-				highScores[j] = highScores[i];
-				highScores[i] = temp;
-			}
-		}
-	}
-
-	//for (int i = 0; i < 5; i++)
-	//{
-	//	if (highScores[i] )
-	//}
-	std::cout << "Printing sorted arr" << std::endl;
-	for (int i = 0; i < 5; i++)
-	{
-		std::cout << highScores[i] << std::endl;
-	}
-
-
-	
-	//Insert
-	temp = 0;
-	for (int i = 0; i < 5; i++)
-	{
-		if (nrOfMoves < highScores[i])
-		{
-			std::cout << "Found: " << nrOfMoves << " lower than highscores[" << i << "]: " << highScores[i] << std::endl;
-			highScores[4] = nrOfMoves;
-			for (int x = 0; x < 5; x++)
-			{
-				for (int j = 0; j < 5; j++)
+				tempScores[i] = currentResult;
+				for (int j = i; j < sizeOfList - 1; j++) //minus 1 för att inte steppa utanför
 				{
-					if (highScores[x] < highScores[j])
-					{
-						temp = highScores[j];
-						highScores[j] = highScores[x];
-						highScores[x] = temp;
-					}
+					tempScores[j + 1] = highScores[j];
 				}
+				updated = true;
 			}
-			break;
+			else if (currentResult > highScores[i] && highScores[i] != 0)
+			{
+				tempScores[i] = highScores[i];
+			}
+			else if (highScores[i] == 0)
+			{
+				tempScores[i] = currentResult;
+				updated = true;
+			}
 		}
-	}
-	std::cout << "Printing sorted arr" << std::endl;
-	for (int i = 0; i < 5; i++)
-	{
-		std::cout << highScores[i] << std::endl;
+
+		//kopierar tillbaka listan
+		for (int i = 0; i < sizeOfList; i++)
+		{
+			highScores[i] = tempScores[i];
+		}
+
 	}
 
-	//
-	//this->nrOfMoves++;
 }
+		
+
+	
+	
+		
+		
+
 
 
