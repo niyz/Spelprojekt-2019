@@ -1,4 +1,5 @@
 #include "NPuzzleGame.hpp"
+#include <stdlib.h>
 
 NPuzzleGame::NPuzzleGame(std::uint8_t puzzleSize, std::uint16_t gridSize)
 	:BlockBasedGame(puzzleSize, gridSize)
@@ -9,7 +10,7 @@ NPuzzleGame::NPuzzleGame(std::uint8_t puzzleSize, std::uint16_t gridSize)
 	{ 
 		for (int x = 0; x < puzzleSize; x++)
 		{
-			if (counter == puzzleSize * puzzleSize - 1)
+			if (counter == puzzleSize * puzzleSize - 1) //Dessa två statments ska ske per random, inte givna platser
 			{
 				this->gameGrid[x][y] = nullptr;
 			}
@@ -38,7 +39,7 @@ void NPuzzleGame::MoveUp()
 			{
 				gameGrid[i][j] = gameGrid[i][j + 1];
 				this->gameGrid[i][j+1] = nullptr;
-				this->nrOfMoves++;
+				this->topScore++;
 				stepped = true;
 			}
 		}
@@ -58,7 +59,7 @@ void NPuzzleGame::MoveDown()
 			{
 				gameGrid[i][j] = gameGrid[i][j - 1];
 				gameGrid[i][j - 1] = NULL;
-				this->nrOfMoves++;
+				this->topScore++;
 				stepped = true;
 			}
 		}
@@ -78,7 +79,7 @@ void NPuzzleGame::MoveLeft()
 			{
 				gameGrid[i][j] = gameGrid[i+1][j];
 				gameGrid[i+1][j] = NULL;
-				this->nrOfMoves++;
+				this->topScore++;
 				stepped = true;
 			}
 		}
@@ -98,7 +99,7 @@ void NPuzzleGame::MoveRight()
 			{
 				gameGrid[i][j] = gameGrid[i - 1][j];
 				gameGrid[i - 1][j] = NULL;
-				this->nrOfMoves++;
+				this->topScore++;
 				stepped = true;
 			}
 		}

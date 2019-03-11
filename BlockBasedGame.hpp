@@ -6,6 +6,8 @@
 #include <vector>
 #include <iostream>
 #include <fstream>
+#include <time.h>
+
 class BlockBasedGame //ABSTRAKT KLASS
 {
 private:
@@ -15,7 +17,7 @@ private:
 
 protected:
 	int highScores[5];
-	int nrOfMoves;
+	int topScore;
 	std::vector<std::vector<Block*>> gameGrid;
 
 public:

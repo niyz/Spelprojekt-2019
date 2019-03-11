@@ -29,20 +29,22 @@
     <ClInclude Include="TestBlock.hpp" />
     <ClInclude Include="TestBlockBasedGame.hpp" />
     <ClInclude Include="TestingBase.hpp" />
-    <ClInclude Include="TestNPuzzleGame.hpp" />
+    <ClInclude Include="TestNPuzzleGame.hpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClInclude>
     <ClInclude Include="TestPointSlidingGame.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="BlockBasedGame.cpp" />
     <ClCompile Include="Block.cpp" />
     <ClCompile Include="Game.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="NPuzzleGame.cpp" />
     <ClCompile Include="PointSlidingGame.cpp" />
     <ClCompile Include="UnitTests.cpp">
-      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">false</ExcludedFromBuild>
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
     </ClCompile>
     <ClCompile Include="Window.cpp" />
   </ItemGroup>

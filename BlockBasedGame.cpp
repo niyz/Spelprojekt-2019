@@ -10,7 +10,7 @@ BlockBasedGame::BlockBasedGame(std::uint8_t puzzleSize, std::uint16_t gridSize)
 	{
 		this->highScores[i] = 0;
 	}
-	this->nrOfMoves = 0;
+	this->topScore = 0;
 	gameGrid.resize(puzzleSize);
 	for (int i = 0; i < puzzleSize; i++) //Tillfällig 2 så vi får en 2x2 vector
 	{
@@ -139,7 +139,7 @@ std::uint16_t BlockBasedGame::Highscore(std::uint8_t index)
 
 std::uint16_t BlockBasedGame::CurrentScore()
 {
-	return nrOfMoves;
+	return topScore;
 }
 
 void BlockBasedGame::SetBoardState(const std::vector<Block*>& state)
