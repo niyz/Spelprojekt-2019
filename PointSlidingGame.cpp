@@ -3,23 +3,39 @@
 PointSlidingGame::PointSlidingGame(std::uint8_t puzzleSize, std::uint16_t gridSize, std::uint16_t goalScore)
 	:BlockBasedGame(puzzleSize, gridSize)
 {
+	srand(time(NULL));
 	this->goalScore = goalScore;
+	int xRand1 = 0;
+	int yRand1 = 0;
+	int colourR = 0;
+	int colourG = 0;
+	int colourB = 0;
+	int maxVal = 255;
+
+//	int intPuzz = static_cast<int>(puzzleSize);
+	std::cout << "Puzzlesize: " << puzzleSize << std::endl;
 	//Randomize for starting positions
-	int xRand1 = rand() % puzzleSize;
-	int yRand1= rand() % puzzleSize;
-	int xRand2 = rand() % puzzleSize;
-	int yRand2 = rand() % puzzleSize;
+	/*int xRand1 = rand() % intPuzz;
+	int yRand1 = rand() % intPuzz;
+	int xRand2 = rand() % intPuzz;
+	int yRand2 = rand() % intPuzz;*/
+	//
+	//std::cout << "xRand2: " << xRand1 << std::endl;
+	//std::cout << "yRand2: " << xRand1 << std::endl;
 
-	this->gameGrid[xRand1][yRand1] = new Block(xRand1 * 100, yRand1 * 100, 2, 0, 0, 0);
-	this->gameGrid[xRand2][yRand2] = new Block(xRand2 * 100, yRand2 * 100, 2, 0, 0, 0);
-
-	for (int i = 0; i < puzzleSize; i++)
+	for (int i = 0; i < 2; i++)
 	{
-		for (int j = 0; j < puzzleSize; j++)
-		{
-			std::cout << gameGrid[i][j] << std::endl;
-		}
+		xRand1 = rand() % puzzleSize;
+		yRand1 = rand() % puzzleSize;
+		colourR = rand() % maxVal;
+		colourG = rand() % maxVal;
+		colourB = rand() % maxVal;
+
+		this->gameGrid[xRand1][yRand1] = new Block(xRand1 * gridSize, yRand1 * gridSize, 2, colourR, colourG, colourB);
 	}
+
+	/*this->gameGrid[xRand1][yRand1] = new Block(xRand1 * 100, yRand1 * 100, 2, 124, 255, 99);
+	this->gameGrid[xRand2][yRand2] = new Block(xRand2 * 100, yRand2 * 100, 2, 135, 12, 243);*/
 }
 
 PointSlidingGame::~PointSlidingGame()
@@ -32,31 +48,36 @@ void PointSlidingGame::MoveUp()
 	//Funktionerna bör nog uppdatera x/y-medelsmvariabel också.
 
 	//move
+	std::uint8_t grdSize = GetGridSize();
 	int sideSize = this->GetPuzzleSize();
 	bool moved = false;
 	bool added = false;
 	int randY, randX, newVal = 0;
 	int maxVal = sideSize - 1;
+	int colourR = 0;
+	int colourG = 0;
+	int colourB = 0;
+	int maxCol = 255;
 
 	for (int i = 0; i < sideSize; i++)
 	{
-		if (moved == true)
-		{
-			i = 0;
-			moved = false;
-		}
 		for (int j = sideSize-1; j >= 1; j--)
 		{
 			if (gameGrid[i][j] != nullptr)
 			{
 				if (gameGrid[i][j - 1] == nullptr)
 				{
-					gameGrid[i][j - 1] = new Block(i * 100, (j - 1) * 100, gameGrid[i][j]->GetValue(), 0, 0, 0);
+					gameGrid[i][j - 1] = new Block(i * grdSize, (j - 1) * grdSize, gameGrid[i][j]->GetValue(), gameGrid[i][j]->GetColourR(), gameGrid[i][j]->GetColourG(), gameGrid[i][j]->GetColourB());
 					delete this->gameGrid[i][j];
 					gameGrid[i][j] = nullptr;
 					moved = true;
 				}
 			}
+		}
+		if (moved == true)
+		{
+			i = -1;
+			moved = false;
 		}
 	}
 	//add
@@ -72,9 +93,9 @@ void PointSlidingGame::MoveUp()
 					{
 						newVal = gameGrid[i][j]->GetValue();
 						newVal = newVal + newVal;
-						gameGrid[i][j]->SetValue(newVal);
-						delete this->gameGrid[i][j-1];
-						gameGrid[i][j-1] = nullptr;
+						gameGrid[i][j-1]->SetValue(newVal);
+						delete this->gameGrid[i][j];
+						gameGrid[i][j] = nullptr;
 					}
 				}
 			}
@@ -83,34 +104,38 @@ void PointSlidingGame::MoveUp()
 	//move
 	for (int i = 0; i < sideSize; i++)
 	{
-		if (moved == true)
-		{
-			i = 0;
-			moved = false;
-		}
+
 		for (int j = sideSize - 1; j >= 1; j--)
 		{
 			if (gameGrid[i][j] != nullptr)
 			{
 				if (gameGrid[i][j - 1] == nullptr)
 				{
-					gameGrid[i][j - 1] = new Block(i * 100, (j-1) * 100, gameGrid[i][j]->GetValue(), 0, 0, 0);
+					gameGrid[i][j - 1] = new Block(i * grdSize, (j - 1) * grdSize, gameGrid[i][j]->GetValue(), gameGrid[i][j]->GetColourR(), gameGrid[i][j]->GetColourG(), gameGrid[i][j]->GetColourB());
 					delete this->gameGrid[i][j];
 					gameGrid[i][j] = nullptr;
 					moved = true;
 				}
 			}
 		}
+		if (moved == true)
+		{
+			i = -1;
+			moved = false;
+		}
 	}
 	for (int i = 0; i < 20 && added == false; i++)
 	{
-		srand(time(NULL));
+		colourR = rand() % maxCol + 0;
+		colourG = rand() % maxCol + 0;
+		colourB = rand() % maxCol + 0;
+
 		randX = rand() % maxVal + 0;
 		randY = rand() % maxVal + 0;
 		std::cout << "randX: " << randX << "\nrandy: " << randY << std::endl;
 		if (gameGrid[randX][randY] == nullptr)
 		{
-			this->gameGrid[randX][randY] = new Block(randX * 100, randY * 100, 2, 0, 0, 0);
+			this->gameGrid[randX][randY] = new Block(randX * grdSize, randY * grdSize, 2, colourR, colourG, colourB);
 			added = true;
 		}
 
@@ -129,7 +154,7 @@ void PointSlidingGame::MoveUp()
 		{
 			if (gameGrid[i][j] == nullptr)
 			{
-				this->gameGrid[i][j] = new Block(i * j, randY * 100, 2, 0, 0, 0);
+				this->gameGrid[i][j] = new Block(randX * grdSize, randY * grdSize, 2, colourR, colourG, colourB);
 			}
 		}
 	}
@@ -140,33 +165,38 @@ void PointSlidingGame::MoveDown()
 	//Funktionerna bör nog uppdatera x/y-medelsmvariabel också.
 
 
+	std::uint8_t grdSize = GetGridSize();
 
 	int sideSize = this->GetPuzzleSize();
 	bool moved = false;
 	bool added = false;
 	int randY, randX, newVal = 0;
 	int maxVal = sideSize - 1;
+	int colourR = 0;
+	int colourG = 0;
+	int colourB = 0;
+	int maxCol = 255;
 	//move
 
 	for (int i = 0; i < sideSize; i++)
 	{
-		if (moved == true)
-		{
-			i = 0;
-			moved = false;
-		}
 		for (int j = 0; j < sideSize-1; j++)
 		{
 			if (gameGrid[i][j] != nullptr)
 			{
 				if (gameGrid[i][j + 1] == nullptr)
 				{
-					gameGrid[i][j + 1] = new Block(i * 100, (j + 1) * 100, gameGrid[i][j]->GetValue(), 0, 0, 0);
+					gameGrid[i][j + 1] = new Block(i * grdSize, (j + 1) * grdSize, gameGrid[i][j]->GetValue(), gameGrid[i][j]->GetColourR(), gameGrid[i][j]->GetColourG(), gameGrid[i][j]->GetColourB());
 					delete this->gameGrid[i][j];
 					gameGrid[i][j] = nullptr;
 					moved = true;
 				}
 			}
+		}
+		if (moved == true)
+		{
+			i = -1;
+			moved = false;
 		}
 	}
 	//add
@@ -182,9 +212,9 @@ void PointSlidingGame::MoveDown()
 					{
 						newVal = gameGrid[i][j]->GetValue();
 						newVal = newVal + newVal;
-						gameGrid[i][j]->SetValue(newVal);
-						delete this->gameGrid[i][j+1];
-						gameGrid[i][j + 1] = nullptr;
+						gameGrid[i][j+1]->SetValue(newVal);
+						delete this->gameGrid[i][j];
+						gameGrid[i][j] = nullptr;
 					}
 				}
 			}
@@ -193,34 +223,37 @@ void PointSlidingGame::MoveDown()
 	//move
 	for (int i = 0; i < sideSize; i++)
 	{
-		if (moved == true)
-		{
-			i = 0;
-			moved = false;
-		}
 		for (int j = 0; j < sideSize-1; j++)
 		{
 			if (gameGrid[i][j] != nullptr)
 			{
 				if (gameGrid[i][j + 1] == nullptr)
 				{
-					gameGrid[i][j + 1] = new Block(i * 100, (j+1) * 100, gameGrid[i][j]->GetValue(), 0, 0, 0);
+					gameGrid[i][j + 1] = new Block(i * grdSize, (j+1) * grdSize, gameGrid[i][j]->GetValue(), gameGrid[i][j]->GetColourR(), gameGrid[i][j]->GetColourG(), gameGrid[i][j]->GetColourB());
 					delete this->gameGrid[i][j];
 					gameGrid[i][j] = nullptr;
 					moved = true;
 				}
 			}
 		}
+		if (moved == true)
+		{
+			i = -1;
+			moved = false;
+		}
 	}
 	for (int i = 0; i < 20 && added == false; i++)
 	{
-		srand(time(NULL));
+		colourR = rand() % maxCol + 0;
+		colourG = rand() % maxCol + 0;
+		colourB = rand() % maxCol + 0;
+
 		randX = rand() % maxVal + 0;
 		randY = rand() % maxVal + 0;
 		std::cout << "randX: " << randX << "\nrandy: " << randY << std::endl;
 		if (gameGrid[randX][randY] == nullptr)
 		{
-			this->gameGrid[randX][randY] = new Block(randX * 100, randY * 100, 2, 0, 0, 0);
+			this->gameGrid[randX][randY] = new Block(randX * grdSize, randY * grdSize, 2, colourR, colourG, colourB);
 			added = true;
 		}
 
@@ -239,7 +272,7 @@ void PointSlidingGame::MoveDown()
 		{
 			if (gameGrid[i][j] == nullptr)
 			{
-				this->gameGrid[i][j] = new Block(i * j, randY * 100, 2, 0, 0, 0);
+				this->gameGrid[i][j] = new Block(randX * grdSize, randY * grdSize, 2, colourR, colourG, colourB);
 			}
 		}
 	}
@@ -249,6 +282,7 @@ void PointSlidingGame::MoveDown()
 void PointSlidingGame::MoveLeft()
 {
 	//Funktionerna bör nog uppdatera x/y-medelsmvariabel också.
+	std::uint8_t grdSize = GetGridSize();
 
 	int sideSize = this->GetPuzzleSize();
 	int randX, randY = 0;
@@ -256,26 +290,30 @@ void PointSlidingGame::MoveLeft()
 	int maxVal = sideSize-1;
 	int newVal = 0;
 	bool moved = false;
+	int colourR = 0;
+	int colourG = 0;
+	int colourB = 0;
+	int maxCol = 255;
 
 	for (int i = sideSize -1; i >= 1; i--) // Flyttar brickor
 	{
-		if (moved == true)
-		{
-			i = sideSize-1;
-			moved = false;
-		}
 		for (int j = 0; j < sideSize; j++)
 		{
 			if (gameGrid[i][j] != nullptr)
 			{
 				if (gameGrid[i - 1][j] == nullptr)
 				{
-					gameGrid[i - 1][j] = new Block((i-1)*100, j*100, gameGrid[i][j]->GetValue(), 0,0,0);
+					gameGrid[i - 1][j] = new Block((i-1)*grdSize, j*grdSize, gameGrid[i][j]->GetValue(), gameGrid[i][j]->GetColourR(), gameGrid[i][j]->GetColourG(), gameGrid[i][j]->GetColourB());
 					delete this->gameGrid[i][j];
 					gameGrid[i][j] = nullptr;
 					moved = true;
 				}
 			}
+		}
+		if (moved == true)
+		{
+			i = sideSize;
+			moved = false;
 		}
 	}
 	for (int i = sideSize -1; i >= 1; i--) //addera brickor
@@ -290,9 +328,9 @@ void PointSlidingGame::MoveLeft()
 					{
 						newVal = gameGrid[i][j]->GetValue();
 						newVal = newVal + newVal;
-						gameGrid[i][j]->SetValue(newVal);
-						delete this->gameGrid[i-1][j];
-						gameGrid[i - 1][j] = nullptr;
+						gameGrid[i-1][j]->SetValue(newVal);
+						delete this->gameGrid[i][j];
+						gameGrid[i][j] = nullptr;
 					}				
 				}
 			}
@@ -300,36 +338,40 @@ void PointSlidingGame::MoveLeft()
 	}
 	for (int i = sideSize -1; i >= 1; i--) // Flyttar brickor
 	{
-		if (moved == true)
-		{
-			i = sideSize-1;
-			moved = false;
-		}
+
 		for (int j = 0; j < sideSize; j++)
 		{
 			if (gameGrid[i][j] != nullptr)
 			{
 				if (gameGrid[i - 1][j] == nullptr)
 				{
-					gameGrid[i - 1][j] = new Block((i - 1) * 100, j * 100, gameGrid[i][j]->GetValue(), 0, 0, 0);
+					gameGrid[i - 1][j] = new Block((i - 1) * grdSize, j * grdSize, gameGrid[i][j]->GetValue(), gameGrid[i][j]->GetColourR(), gameGrid[i][j]->GetColourG(), gameGrid[i][j]->GetColourB());
 					delete this->gameGrid[i][j];
 					gameGrid[i][j] = nullptr;
 					moved = true;
 				}
 			}
 		}
+		if (moved == true)
+		{
+			i = sideSize;
+			moved = false;
+		}
 	}
 	//Randomisera ny ruta
 
 	for (int i = 0; i < 20 && added == false; i++)
 	{
-		srand(time(NULL));
+		colourR = rand() % maxCol + 0;
+		colourG = rand() % maxCol + 0;
+		colourB = rand() % maxCol + 0;
+
 		randX = rand() % maxVal + 0;
 		randY = rand() % maxVal + 0;
 		std::cout << "randX: " << randX << "\nrandy: " << randY << std::endl;
 		if (gameGrid[randX][randY] == nullptr)
 		{
-			this->gameGrid[randX][randY] = new Block(randX * 100, randY * 100, 2, 0, 0, 0);
+			this->gameGrid[randX][randY] = new Block(randX * grdSize, randY * grdSize, 2, colourR, colourG, colourB);
 			added = true;
 		}
 
@@ -348,7 +390,7 @@ void PointSlidingGame::MoveLeft()
 		{
 			if (gameGrid[i][j] == nullptr)
 			{
-				this->gameGrid[i][j] = new Block(i * j, randY * 100, 2, 0, 0, 0);
+				this->gameGrid[i][j] = new Block(randX * grdSize, randY * grdSize, 2, colourR, colourG, colourB);
 			}
 		}
 	}
@@ -359,6 +401,7 @@ void PointSlidingGame::MoveLeft()
 void PointSlidingGame::MoveRight()
 {
 	//Funktionerna bör nog uppdatera x/y-medelsmvariabel också.
+	std::uint8_t grdSize = GetGridSize();
 
 	int sideSize = this->GetPuzzleSize();
 	int randX, randY = 0;
@@ -366,25 +409,30 @@ void PointSlidingGame::MoveRight()
 	int maxVal = sideSize-1;
 	int newVal = 0;
 	bool moved = false;
+	int colourR = 0;
+	int colourG = 0;
+	int colourB = 0;
+	int maxCol = 255;
 	for (int i = 0; i < sideSize-1; i++) // Flyttar brickor
 	{
-		if (moved == true)
-		{
-			i = 0;
-			moved = false;
-		}
+		
 		for (int j = 0; j < sideSize; j++)
 		{
 			if (gameGrid[i][j] != nullptr)
 			{
 				if (gameGrid[i + 1][j] == nullptr)
 				{
-					gameGrid[i + 1][j] = new Block((i + 1) * 100, j * 100, gameGrid[i][j]->GetValue(), 0, 0, 0);;
+					gameGrid[i + 1][j] = new Block((i + 1) * grdSize, j * grdSize, gameGrid[i][j]->GetValue(), gameGrid[i][j]->GetColourR(), gameGrid[i][j]->GetColourG(), gameGrid[i][j]->GetColourB());
 					delete this->gameGrid[i][j];
 					gameGrid[i][j] = nullptr;
 					moved = true;
 				}
 			}
+		}
+		if (moved == true)
+		{
+			i = -1;
+			moved = false;
 		}
 	}
 
@@ -400,9 +448,15 @@ void PointSlidingGame::MoveRight()
 					{
 						newVal = gameGrid[i][j]->GetValue();
 						newVal = newVal + newVal;
+						gameGrid[i+1][j]->SetValue(newVal);
+						delete this->gameGrid[i][j];
+						gameGrid[i][j] = nullptr;
+
+						/*newVal = gameGrid[i][j]->GetValue();
+						newVal = newVal + newVal;
 						gameGrid[i][j]->SetValue(newVal);
 						delete this->gameGrid[i + 1][j];
-						gameGrid[i+1][j] = nullptr;
+						gameGrid[i+1][j] = nullptr;*/
 					}
 				}
 			}
@@ -411,37 +465,42 @@ void PointSlidingGame::MoveRight()
 
 	for (int i = 0; i < sideSize - 1; i++) // Flyttar brickor
 	{
-		if (moved == true)
-		{
-			i = 0;
-			moved = false;
-		}
 		for (int j = 0; j < sideSize; j++)
 		{
 			if (gameGrid[i][j] != nullptr)
 			{
 				if (gameGrid[i + 1][j] == nullptr)
 				{
-					gameGrid[i + 1][j] = new Block((i + 1) * 100, j * 100, gameGrid[i][j]->GetValue(), 0, 0, 0);
+					gameGrid[i + 1][j] = new Block((i + 1) * grdSize, j * grdSize,gameGrid[i][j]->GetValue(), gameGrid[i][j]->GetColourR(), gameGrid[i][j]->GetColourG(), gameGrid[i][j]->GetColourB());
 					delete this->gameGrid[i][j];
 					gameGrid[i][j] = nullptr;
 					moved = true;
 				}
 			}
 		}
+		if (moved == true)
+		{
+			i = -1;
+			moved = false;
+		}
 	}
+
+
 
 	//Randomisera ny ruta
 
 	for (int i = 0; i < 20 && added == false; i++)
 	{
-		srand(time(NULL));
+		colourR = rand() % maxCol + 0;
+		colourG = rand() % maxCol + 0;
+		colourB = rand() % maxCol + 0;
+
 		randX = rand() % maxVal + 0;
 		randY = rand() % maxVal + 0;
 		std::cout << "randX: " << randX << "\nrandy: " << randY << std::endl;
 		if (gameGrid[randX][randY] == nullptr)
 		{
-			this->gameGrid[randX][randY] = new Block(randX * 100, randY * 100, 2, 0, 0, 0);
+			this->gameGrid[randX][randY] = new Block(randX * grdSize, randY * grdSize, 2, colourR, colourG, colourB);
 			added = true;
 		}
 
@@ -460,7 +519,7 @@ void PointSlidingGame::MoveRight()
 		{
 			if (gameGrid[i][j] == nullptr)
 			{
-				this->gameGrid[i][j] = new Block(i * j, randY * 100, 2, 0, 0, 0);
+				this->gameGrid[i][j] = new Block(randX * grdSize, randY * grdSize, 2, colourR, colourG, colourB);
 			}
 		}
 	}
@@ -528,29 +587,29 @@ void PointSlidingGame::UpdateScore()
 	}
 	this->topScore = score;
 
-	for (int x = 0; x < 10; x++)
-	{
-		updated = false;
-		if (x == 0)
-			score = 64;
-		else if (x == 1)
-			score = 128;
-		else if (x == 2)
-			score = 128;
-		else if (x == 3)
-			score = 512;
-		else if (x == 4)
-			score = 16;
-		else if (x == 5)
-			score = 32;
-		else if (x == 6)
-			score = 1024;
-		else if (x == 7)
-			score = 1024;
-		else if (x == 8)
-			score = 512;
-		else if (x == 9)
-			score = 64;
+	//for (int x = 0; x < 10; x++)
+	//{
+	//	updated = false;
+	//	if (x == 0)
+	//		score = 64;
+	//	else if (x == 1)
+	//		score = 128;
+	//	else if (x == 2)
+	//		score = 128;
+	//	else if (x == 3)
+	//		score = 512;
+	//	else if (x == 4)
+	//		score = 16;
+	//	else if (x == 5)
+	//		score = 32;
+	//	else if (x == 6)
+	//		score = 1024;
+	//	else if (x == 7)
+	//		score = 1024;
+	//	else if (x == 8)
+	//		score = 512;
+	//	else if (x == 9)
+	//		score = 64;
 		for (int i = 0; i < sizeOfList && updated == false; i++)
 		{
 			if (score >= highScores[i])
@@ -586,6 +645,6 @@ void PointSlidingGame::UpdateScore()
 			tempScores[i] = 0;
 		}
 		
-	}
+	//}
 	
 }
