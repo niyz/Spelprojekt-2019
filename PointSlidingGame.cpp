@@ -32,7 +32,7 @@ void PointSlidingGame::MoveUp()
 	//Funktionerna bör nog uppdatera x/y-medelsmvariabel också.
 
 	//move
-	size_t sideSize = this->GetPuzzleSize();
+	int sideSize = this->GetPuzzleSize();
 	bool moved = false;
 	bool added = false;
 	int randY, randX, newVal = 0;
@@ -51,7 +51,8 @@ void PointSlidingGame::MoveUp()
 			{
 				if (gameGrid[i][j - 1] == nullptr)
 				{
-					gameGrid[i][j - 1] = gameGrid[i][j];
+					gameGrid[i][j - 1] = new Block(i * 100, (j - 1) * 100, gameGrid[i][j]->GetValue(), 0, 0, 0);
+					delete this->gameGrid[i][j];
 					gameGrid[i][j] = nullptr;
 					moved = true;
 				}
@@ -72,6 +73,7 @@ void PointSlidingGame::MoveUp()
 						newVal = gameGrid[i][j]->GetValue();
 						newVal = newVal + newVal;
 						gameGrid[i][j]->SetValue(newVal);
+						delete this->gameGrid[i][j-1];
 						gameGrid[i][j-1] = nullptr;
 					}
 				}
@@ -92,7 +94,8 @@ void PointSlidingGame::MoveUp()
 			{
 				if (gameGrid[i][j - 1] == nullptr)
 				{
-					gameGrid[i][j - 1] = gameGrid[i][j];
+					gameGrid[i][j - 1] = new Block(i * 100, (j-1) * 100, gameGrid[i][j]->GetValue(), 0, 0, 0);
+					delete this->gameGrid[i][j];
 					gameGrid[i][j] = nullptr;
 					moved = true;
 				}
@@ -138,7 +141,7 @@ void PointSlidingGame::MoveDown()
 
 
 
-	size_t sideSize = this->GetPuzzleSize();
+	int sideSize = this->GetPuzzleSize();
 	bool moved = false;
 	bool added = false;
 	int randY, randX, newVal = 0;
@@ -158,7 +161,8 @@ void PointSlidingGame::MoveDown()
 			{
 				if (gameGrid[i][j + 1] == nullptr)
 				{
-					gameGrid[i][j + 1] = gameGrid[i][j];
+					gameGrid[i][j + 1] = new Block(i * 100, (j + 1) * 100, gameGrid[i][j]->GetValue(), 0, 0, 0);
+					delete this->gameGrid[i][j];
 					gameGrid[i][j] = nullptr;
 					moved = true;
 				}
@@ -179,6 +183,7 @@ void PointSlidingGame::MoveDown()
 						newVal = gameGrid[i][j]->GetValue();
 						newVal = newVal + newVal;
 						gameGrid[i][j]->SetValue(newVal);
+						delete this->gameGrid[i][j+1];
 						gameGrid[i][j + 1] = nullptr;
 					}
 				}
@@ -199,7 +204,8 @@ void PointSlidingGame::MoveDown()
 			{
 				if (gameGrid[i][j + 1] == nullptr)
 				{
-					gameGrid[i][j + 1] = gameGrid[i][j];
+					gameGrid[i][j + 1] = new Block(i * 100, (j+1) * 100, gameGrid[i][j]->GetValue(), 0, 0, 0);
+					delete this->gameGrid[i][j];
 					gameGrid[i][j] = nullptr;
 					moved = true;
 				}
@@ -244,7 +250,7 @@ void PointSlidingGame::MoveLeft()
 {
 	//Funktionerna bör nog uppdatera x/y-medelsmvariabel också.
 
-	size_t sideSize = this->GetPuzzleSize();
+	int sideSize = this->GetPuzzleSize();
 	int randX, randY = 0;
 	bool added = false;
 	int maxVal = sideSize-1;
@@ -264,7 +270,8 @@ void PointSlidingGame::MoveLeft()
 			{
 				if (gameGrid[i - 1][j] == nullptr)
 				{
-					gameGrid[i - 1][j] = gameGrid[i][j];
+					gameGrid[i - 1][j] = new Block((i-1)*100, j*100, gameGrid[i][j]->GetValue(), 0,0,0);
+					delete this->gameGrid[i][j];
 					gameGrid[i][j] = nullptr;
 					moved = true;
 				}
@@ -284,6 +291,7 @@ void PointSlidingGame::MoveLeft()
 						newVal = gameGrid[i][j]->GetValue();
 						newVal = newVal + newVal;
 						gameGrid[i][j]->SetValue(newVal);
+						delete this->gameGrid[i-1][j];
 						gameGrid[i - 1][j] = nullptr;
 					}				
 				}
@@ -303,7 +311,8 @@ void PointSlidingGame::MoveLeft()
 			{
 				if (gameGrid[i - 1][j] == nullptr)
 				{
-					gameGrid[i - 1][j] = gameGrid[i][j];
+					gameGrid[i - 1][j] = new Block((i - 1) * 100, j * 100, gameGrid[i][j]->GetValue(), 0, 0, 0);
+					delete this->gameGrid[i][j];
 					gameGrid[i][j] = nullptr;
 					moved = true;
 				}
@@ -351,7 +360,7 @@ void PointSlidingGame::MoveRight()
 {
 	//Funktionerna bör nog uppdatera x/y-medelsmvariabel också.
 
-	size_t sideSize = this->GetPuzzleSize();
+	int sideSize = this->GetPuzzleSize();
 	int randX, randY = 0;
 	bool added = false;
 	int maxVal = sideSize-1;
@@ -370,7 +379,8 @@ void PointSlidingGame::MoveRight()
 			{
 				if (gameGrid[i + 1][j] == nullptr)
 				{
-					gameGrid[i + 1][j] = gameGrid[i][j];
+					gameGrid[i + 1][j] = new Block((i + 1) * 100, j * 100, gameGrid[i][j]->GetValue(), 0, 0, 0);;
+					delete this->gameGrid[i][j];
 					gameGrid[i][j] = nullptr;
 					moved = true;
 				}
@@ -391,6 +401,7 @@ void PointSlidingGame::MoveRight()
 						newVal = gameGrid[i][j]->GetValue();
 						newVal = newVal + newVal;
 						gameGrid[i][j]->SetValue(newVal);
+						delete this->gameGrid[i + 1][j];
 						gameGrid[i+1][j] = nullptr;
 					}
 				}
@@ -411,7 +422,8 @@ void PointSlidingGame::MoveRight()
 			{
 				if (gameGrid[i + 1][j] == nullptr)
 				{
-					gameGrid[i + 1][j] = gameGrid[i][j];
+					gameGrid[i + 1][j] = new Block((i + 1) * 100, j * 100, gameGrid[i][j]->GetValue(), 0, 0, 0);
+					delete this->gameGrid[i][j];
 					gameGrid[i][j] = nullptr;
 					moved = true;
 				}
@@ -492,10 +504,19 @@ int PointSlidingGame::GameStatus() const
 
 void PointSlidingGame::UpdateScore()
 {
+	/////Fixa
 	int score = 0;
 	int sideSize = this->GetPuzzleSize();
-
-	for (int i = 0; i < sideSize; i++)
+	int sizeOfList = 5;
+	int tempScores[5];
+	bool updated = false;
+	tempScores[0] = 0;
+	tempScores[1] = 0;
+	tempScores[2] = 0;
+	tempScores[3] = 0;
+	tempScores[4] = 0;
+	//Summing up total score
+	for (int i = 0; i < sideSize; i++) 
 	{
 		for (int j = 0; j < sideSize; j++)
 		{
@@ -506,4 +527,65 @@ void PointSlidingGame::UpdateScore()
 		}
 	}
 	this->topScore = score;
+
+	for (int x = 0; x < 10; x++)
+	{
+		updated = false;
+		if (x == 0)
+			score = 64;
+		else if (x == 1)
+			score = 128;
+		else if (x == 2)
+			score = 128;
+		else if (x == 3)
+			score = 512;
+		else if (x == 4)
+			score = 16;
+		else if (x == 5)
+			score = 32;
+		else if (x == 6)
+			score = 1024;
+		else if (x == 7)
+			score = 1024;
+		else if (x == 8)
+			score = 512;
+		else if (x == 9)
+			score = 64;
+		for (int i = 0; i < sizeOfList && updated == false; i++)
+		{
+			if (score >= highScores[i])
+			{
+				if (i == sizeOfList - 1) //För det sista itemet
+				{
+					highScores[i] = score;
+					for (int x = 0; x < sizeOfList; x++)
+					{
+						tempScores[x] = highScores[x];
+					}
+				}
+				else
+				{
+					tempScores[i] = score;
+					for (int j = i; j < sizeOfList - 1; j++)
+					{
+						tempScores[j + 1] = highScores[j];
+					}
+					updated = true;
+				}
+
+			}
+			else
+			{
+				tempScores[i] = highScores[i];
+			}
+		}
+
+		for (int i = 0; i < sizeOfList; i++)
+		{
+			highScores[i] = tempScores[i];
+			tempScores[i] = 0;
+		}
+		
+	}
+	
 }
