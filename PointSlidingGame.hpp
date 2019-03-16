@@ -22,7 +22,7 @@ public:
 	void MoveDown();
 	void MoveLeft();
 	void MoveRight();
-	//Vid Lyckad förflyttning ska en ny bricka med värdet två slumpas in på tom plats. Tips: Dela upp förflyttningen i två steg. En del som lägger samman brickorna som ska kombineras och en del som utför själva förflyttningen.
+	//Vid Lyckad förflyttning ska en ny bricka med värdet två slumpas in på tom plats. Tips: Dela upp förflyttningen i två steg. En del som lägger samman brickorna som ska kombineras och en del som utför själva förflyttningen..
 
 	int GameStatus() const;
 	//-1 om det inte finns några möjliga drag
